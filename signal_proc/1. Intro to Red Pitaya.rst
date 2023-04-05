@@ -1,16 +1,18 @@
-
-============================================================================
+############################################################################
 ECE2170: Using the Red Pitaya for measuring properties of periodic waveforms
-============================================================================
+############################################################################
 
+=================
 Goals of this Lab
 =================
+
 1. Demonstrate ability to use Oscilloscope, Signal Generator, and Spectrum Analyzer capabilities of Red Pitaya through GUI.
 
 2. Configure Red pitaya to receive external inputs.
 
 3. Perform measurements on a multitude of periodic waveforms
 
+====================
 Tasks / Measurements
 ====================
 
@@ -23,7 +25,8 @@ Configure the Red Pitaya for a Loopback configuration (SMA cables tied between t
 Fig. 1: Red Pitaya in Loopback Configuration
 
 Measure the Period of a waveform – Time Domain
------------------------
+----------------------------------------------
+
 Open the Oscilloscope & function Generator Application.
 
 Configure the output of the red pitaya for a 1500Hz Sinusoid as shown in Fig. 2.
@@ -39,7 +42,6 @@ Configure the trigger for a negative edge trigger with zero level and normal tri
 .. image:: media/image1.03.png
    :name: Trigger Configuration
    :align: center
-
 
 Fig. 3: Trigger Configuration
 
@@ -115,13 +117,12 @@ calculated for signals of equal frequency with the relation
    \begin{matrix}
    \phi = 2\pi f\Delta t\ \ \ (rad)\ \#(2) \\
    \end{matrix}
+
 1. Analytically calculate the period of either waveform, and the time delay expected for the configured 45 degree phase shift between waveforms.
 
-2. Set the output frequency of a OUT1 to 1000 Hz and trigger to normal or auto. What is the behavior that is observed? Comment as to the origin 
-   of the behavior, and a potential fix for the behavior. (hint,consider the greatest common divisor between the two frequencies)
+2. Set the output frequency of a OUT1 to 1000 Hz and trigger to normal or auto. What is the behavior that is observed? Comment as to the origin of the behavior, and a potential fix for the behavior. (hint,consider the greatest common divisor between the two frequencies)
 
-3. (Take home) Repeat part 2, but for the frequency values of 3000Hz, and 1531Hz. What behavior is displayed here for each frequency? What are 
-   some potential ways to work around this problem? (hint, consider the greatest common divisor between the two frequencies, and
+3. (Take home) Repeat part 2, but for the frequency values of 3000Hz, and 1531Hz. What behavior is displayed here for each frequency? What are some potential ways to work around this problem? (hint, consider the greatest common divisor between the two frequencies, and
    alternative trigger modes)
 
 Measure the Spectrum of the waveform - Frequency Domain
@@ -136,29 +137,25 @@ Recreate the waveform employed in 2.1. For convenience, this is reprinted below:
 
 Set the Span of the spectrum analyzer to 6.5 kHz.
 
-Observe the location of the peak(s), and infer what this implies about the sinusoid’s fundamental frequency and its purity (harmonic content). Mention 
-the relative strength between the various peaks in dB and in linear scales, knowing the relation between dB and linear scales in dBm is given by:
+Observe the location of the peak(s), and infer what this implies about the sinusoid’s fundamental frequency and its purity (harmonic content). Mention the relative strength between the various peaks in dB and in linear scales, knowing the relation between dB and linear scales in dBm is given by:
 
 .. math::
    \begin{matrix}
    P_{dBm} = 10\log_{10}\frac{P_{lin}}{1mW}\ \#(3) \\
    \end{matrix}
-   
+
 Comparing Waveforms in the Time domain
 --------------------------------------
 
 Configure the Red Pitaya for a Loopback configuration (SMA cables tied between the outputs and inputs to the Red Pitaya) as shown in Fig. 1.
 
 Reference Case: Sine and Cosine
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 Set OUT1 and OUT2 to be sines of the same frequency of 1000Hz, with equal amplitude. Set OUT2 to have a phase of 90 degrees.
-
 
 |Graphical user interface Description automatically generated|\ |A
 screenshot of a phone Description automatically generated with medium
 confidence|
-
 
 Fig. 9: Reference waveforms
 
@@ -170,7 +167,7 @@ Fig. 9: Reference waveforms
 3. (Take Home) Drop the amplitude of OUT2 to 0.45 V (0.5x amplitude). How much does the waveform’s Peak-to-Peak value change by?
 
 Sine and Square
-~~~~~~~~~~~~~~~
+^^^^^^^^^^^^^^^
 
 With the same setup as 2.5.1, change OUT1 to produce a SQUARE, as shown in Fig. 10.
 
@@ -182,9 +179,7 @@ Fig. 10: OUT1 Configured for SQUARE output
 
 1. Capture a screen shot of the resulting waveforms. Comment on and visible similarities or differences.
 
-2. (Take Home) Try varying amplitudes/frequencies/phases of both channels and comment on the overall effects each variable does as observed 
-   in the time domain. Capture a screen capture that demonstrates each observable change, and clearly label what change was done between 
-   each channel. For any parameters that do not produce visible changes, comment on why you believe this is so.
+2. (Take Home) Try varying amplitudes/frequencies/phases of both channels and comment on the overall effects each variable does as observed in the time domain. Capture a screen capture that demonstrates each observable change, and clearly label what change was done between each channel. For any parameters that do not produce visible changes, comment on why you believe this is so.
 
    a. Amplitude:
 
@@ -193,7 +188,7 @@ Fig. 10: OUT1 Configured for SQUARE output
    c. Phase:
 
 Sine and Sawtooth
-~~~~~~~~~~~~~~~~~
+^^^^^^^^^^^^^^^^^
 
 With the same setup as 2.5.1, change OUT1 to produce a SAWU, as shown in Fig. 11.
 
@@ -205,8 +200,7 @@ Fig. 11: OUT1 Configured for SAWU output
 
 1. Capture a screen shot of the resulting waveforms. Comment on any visible similarities or differences.
 
-2. (Take Home) Try varying amplitudes/frequencies/phases of both channels and comment on the overall effects each variable does as observed 
-   in the time domain. Capture a screen capture that demonstrates each observable change, and clearly label what change was done between each channel. 
+2. (Take Home) Try varying amplitudes/frequencies/phases of both channels and comment on the overall effects each variable does as observed in the time domain. Capture a screen capture that demonstrates each observable change, and clearly label what change was done between each channel.
    For any parameters that do not produce visible changes, comment on why you believe this is so.
 
    a. Amplitude:
@@ -216,7 +210,7 @@ Fig. 11: OUT1 Configured for SAWU output
    c. Phase:
 
 (Take Home) Sine and Pulse Width Modulated (PWM) output
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 With the same setup as 2.5.1, change OUT1 to produce a PWM, as shown in Fig. 12.
 
@@ -227,9 +221,7 @@ Fig.  12: OUT 1 configured for PWM output
 
 1. Capture a screen shot of the resulting spectrums/spectrograms. Comment on any visible similarities or differences.
 
-2. (Take Home) Try varying amplitudes/frequencies/phases of both channels and comment on the overall effects each variable does as observed in the 
-   frequency domain. Capture a screen capture that demonstrates each observable change, and clearly label what change was done between each channel.
-   For any parameters that do not produce visible changes, comment on why you believe this is so.
+2. (Take Home) Try varying amplitudes/frequencies/phases of both channels and comment on the overall effects each variable does as observed in the frequency domain. Capture a screen capture that demonstrates each observable change, and clearly label what change was done between each channel. For any parameters that do not produce visible changes, comment on why you believe this is so.
 
    a. Amplitude:
 
@@ -255,19 +247,15 @@ Reference text
 
 For more in-depth documentation, view the official documentation at:
 
-
-
 :ref:`Oscilloscope <Oscilloscope>`
 
-
 :ref:`Spectrum Analyzer <SpectrumAnalyzer>`
-
 
 |wikipedia_dB|
 
 .. |Wikipedia_dB| raw:: html
 
-   <a href="https://en.wikipedia.org/wiki/Decibel" target="_blank">Wikipedia dB Scale</a>
+    <a href="https://en.wikipedia.org/wiki/Decibel" target="_blank">Wikipedia dB Scale</a>
 
 .. |Graphical user interface Description automatically generated| image:: media/image1.09.png
    :width: 1.22517in
