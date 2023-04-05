@@ -1,9 +1,10 @@
-=====================================
+#######################################
 ECE2170: Modulation with the Red Pitaya
-=====================================
+#######################################
 
+======
 Theory
-===========
+======
 
 Mixing
 ------
@@ -59,8 +60,9 @@ modulated signal some phase :math:`\phi`.
    x_{m}(t) = A_{m}\cos\left( \omega_{m}t + \phi \right) \\
    \end{matrix}\ \#(4) \\
    \end{matrix}
+
 Dual Side Band (DSB) Modulation
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 Employing the simplest mixing, we simply multiple the carrier (denoted
 :math:`x_{c}(t)`) by the message signal (denoted :math:`x_{m}(t)`). This
@@ -74,7 +76,7 @@ This is what is known as Dual Side Band (DSB) or suppressed carrier
 modulation.
 
 Amplitude Modulation
-~~~~~~~~~~~~~~~~~~~~
+^^^^^^^^^^^^^^^^^^^^
 
 A more traditional AM modulation method for AM modulation employs a
 slightly modified version of DSB modulation. This time, the modulating
@@ -92,6 +94,7 @@ This can be shown with some more clever trig identities to take the form
    \begin{matrix}
    x_{AM}(t) = A_{c}\cos(2\pi f) + \frac{A_{c}}{2}\left\lbrack \cos\left( \omega_{c}t - \left\lbrack \omega_{m}t + \phi \right\rbrack \right) + cos\left( \omega_{c}t + \left\lbrack \omega_{m}t + \phi \right\rbrack \right) \right\rbrack\ \#(7) \\
    \end{matrix}
+
 Sidenote: Modulation Index
 ^^^^^^^^^^^^^^^^^^^^^^^^^^
 
@@ -105,6 +108,7 @@ the message onto the carrier.
    \begin{matrix}
    \mu = \frac{\left| m(t) \right|}{A_{c}}\ \#(8) \\
    \end{matrix}
+
 Full strengths modulation corresponds to a 100% index, and means that
 potential peaks of the carrier can be suppressed into a null. This
 parameter is not so important for this lab, but will be of interest to
@@ -114,18 +118,15 @@ the analysis of communication systems in a future course.
    :name: Graph
    :align: center
 
-
-Figure : Modulation Index visualized. Credit: 
+Figure : Modulation Index visualized. Credit:
 |Wikipedia|
 
 .. |Wikipedia| raw:: html
 
     <a href=https://en.wikipedia.org/wiki/Amplitude_modulation#Modulation_index="_blank">Wikipedia Modulation</a>
 
-
-
-Normalized Frequency:
----------------------
+Normalized Frequency
+--------------------
 
 After the act of sampling, it becomes convenient to rescale (normalize)
 frequency w.r.t. the sampling frequency. This is done by the relation
@@ -135,18 +136,15 @@ frequency w.r.t. the sampling frequency. This is done by the relation
    \widehat{\omega} = \omega T_{s} = \frac{2\pi f}{f_{s}}\ \#(8) \\
    \end{matrix}
 Where
-:math:`\omega = 2\pi f,\ and\ T_{s} = 1\backslash f_{s}\ is\ the\ sampling\ time.\ `\ This
-representation is oftentimes used in discrete time systems as it allows
-for the consideration of systems in reference to the total bandwidth of
-the discrete system.
+:math:`\omega = 2\pi f,\ and\ T_{s} = 1\backslash f_{s}\ is\ the\ sampling\ time.\`\ This representation is oftentimes used in discrete time systems as it allows for the consideration of systems in reference to the total bandwidth of the discrete system.
 
-Tasks/Questions:
-----------------------
+Tasks/Questions
+---------------
 
 .. _theory-1:
 
-Theory 
--------
+Theory
+------
 
 1. Why in the analysis of mixing, were two sinusoids used? (Hint,
    sinusoids are what for the space of periodic functions?)
@@ -176,9 +174,8 @@ Experiment
 1. Set the frequency of the message signal to 0.1. Show a plot of the
    acquired waveform
 
-What does a normalized frequency
-:math:`\widehat{\omega} < \frac{1}{2\pi}` mean, and why does it
-introduce odd behavior into the observed waveforms?
+    What does a normalized frequency
+    :math:`\widehat{\omega} < \frac{1}{2\pi}` mean, and why does it introduce odd behavior into the observed waveforms?
 
 2. What happens when the message signal frequency is the same size or
    greater than the carrier frequency?
@@ -196,3 +193,4 @@ introduce odd behavior into the observed waveforms?
    setting the message signal to have frequency content that passes the
    sampling frequency when modulated by the carrier. Show a plot of the
    aliased content in the time domain, and the frequency domain.
+
