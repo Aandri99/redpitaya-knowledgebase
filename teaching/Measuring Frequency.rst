@@ -1,183 +1,181 @@
-============================
-Measuring Capacitance
-============================
+###################
+Measuring Frequency
+###################
 
+=========
 Objective
-===============
-In this section, we will discuss the measurement of capacitance, which is a fundamental property of electrical circuits. Capacitance is a measure of an object's ability to store electrical energy in an electric field, and it is expressed in farads (F). Capacitance measurement is essential in many areas of electrical engineering, including power transmission, signal processing, and electronic circuit design. Capacitance measurement can be challenging due to various factors, including stray capacitance, parasitic capacitance, and measurement instrument limitations.
+=========
 
+In this section, we will discuss the measurement of frequency, which is a fundamental property of electrical circuits. Frequency is a measure of the number of oscillations per unit of time, and it is expressed in Hertz (Hz). Frequency measurement is essential in many areas of electrical engineering, including signal processing, audio, and radio frequency (RF) design. Frequency measurement can be challenging due to various factors, including signal distortion, noise, and measurement instrument limitations.
 
-Capacitors
-================
-Capacitors are essential passive electronic components used in a variety of applications, such as power supplies, filters, and oscillators. They store energy in the form of an electric field when a voltage is applied across them and release that energy when the voltage changes. In this introduction to capacitors, we will explore the basic principles, types, and applications of capacitors in electronic circuits.
+=====================
+Frequency Measurement
+=====================
 
+Frequency measurement is the process of determining the frequency of a signal. It is a crucial step in many electronic circuits and systems, such as audio, RF, and digital systems. In this section, we will discuss the basics of frequency measurement and explore a hands-on experiment using the Red Pitaya board. The choice of frequency measurement technique depends on several factors, including the frequency range of the signal, the accuracy required, and the equipment available
 
-.. image:: img/3.2/1.1.jpg
-	:name: capacitors
-	:align: center
+There are several techniques for measuring frequency, including:
 
+Period Counting Method
+--------------------------
 
-**Basic Principles of Capacitors**
+The period counting method involves measuring the time duration of a single cycle of a periodic waveform and then calculating the frequency by taking the inverse of the time duration. This method is simple and straightforward, requiring only an oscilloscope or frequency counter to measure the period. However, the period counting method may not be suitable for high-frequency signals or signals with significant noise or distortion, as these factors can make it difficult to accurately determine the period of the waveform.
 
-A capacitor consists of two conductive plates separated by an insulating material called a dielectric. When a voltage is applied across the plates, it creates an electric field between them. This electric field stores energy, and when the voltage changes, the energy is released back into the circuit. The capacitor's ability to store and release energy is determined by its capacitance, which is measured in farads (F). The capacitance value depends on factors such as the area of the plates, the distance between them, and the type of dielectric material.
+Frequency-to-Voltage Conversion Method
+--------------------------------------
 
-.. image:: img/3.2/1.2.png
-	:name: capacitor plates
-	:align: center
+The frequency-to-voltage conversion method involves using a dedicated converter circuit to convert the input frequency into a proportional voltage. This converter circuit typically consists of a comparator, a monostable multivibrator, and an integrator. The output voltage from the converter circuit can then be measured using a voltmeter or an analog-to-digital converter (ADC). Although this method can provide good accuracy, it may be affected by temperature changes and component aging, which can introduce errors in the output voltage.
 
+Phase-Locked Loop Method
+------------------------
 
+The phase-locked loop (PLL) method is a more complex and versatile technique that can provide high accuracy over a wide frequency range. A PLL is a feedback control system that adjusts its output frequency to match the input frequency. The PLL compares the phase of the input signal with that of its output signal, and adjusts the frequency of the output signal to minimize the phase difference between the two signals. This method is commonly used in communication and navigation systems, where precise frequency control is critical.
 
-The capacitance is given by equation:
+Time Interval Method
+--------------------------
 
-.. math:: C = \frac{\varepsilon_0 \cdot A}{d}
+The time interval method involves measuring the time between two consecutive rising (or falling) edges of a signal and using this information to calculate the frequency. This method requires specialized equipment, such as a time interval counter or a high-speed oscilloscope, with fast rise times and low jitter to accurately measure the time interval between signal edges. The time interval method is suitable for measuring high-frequency signals with a high level of accuracy.
 
-There are several types of capacitors:
+Fast Fourier Transform Method
+---------------------------------
 
-**Ceramic Capacitors**
-Ceramic capacitors use a ceramic material as the dielectric and are commonly used in high-frequency applications due to their low parasitic inductance and low loss.
+The fast Fourier transform (FFT) method is a digital signal processing technique that converts a time-domain signal into a frequency-domain signal by decomposing it into its constituent frequencies. By analyzing the frequency-domain representation of the signal, the frequency of the input signal can be determined. This method requires a digital storage oscilloscope or a signal analyzer with FFT capability, and it can provide high-resolution frequency measurements. However, the accuracy of the FFT method depends on the quality of the input signal and the resolution of the digital sampling.
 
+===========
+Oscillators
+===========
 
-**Electrolytic Capacitors**
-These capacitors have a dielectric made of an electrolyte-soaked paper or a tantalum oxide layer on the surface of the anode. They are commonly used in power supplies and other low-frequency applications due to their high capacitance values.
+Oscillators are essential components used in a variety of applications, such as signal generators, frequency synthesizers, and clocks. They generate signals that oscillate at a specific frequency, which is determined by the characteristics of the oscillator circuit. In this introduction to oscillators, we will explore the basic principles, types, and applications of oscillators in electronic circuits.
 
+.. image:: img/3.4/1.1.png
+    :name: Oscillator
+    :align: center
 
-**Film Capacitors**
-Film capacitors use a thin film of metal as the plates and a plastic film as the dielectric. They are suitable for a wide range of applications, including filters, resonant circuits, and decoupling.
+|Oscillator|
 
+.. |Oscillator| raw:: html
 
-**Aluminum Capacitors**
-Aluminum capacitors use aluminum foils as the plates and a layer of aluminum oxide as the dielectric. They are commonly used in power supply applications due to their high capacitance values and ability to withstand high voltages.
+    <a href="https://www.electronics-tutorials.ws/oscillator/oscillators.html" target="_blank">Source:electronics-tutorials.ws</a>
 
+Basic Principles of Oscillators
+-------------------------------
 
-**Applications of Capacitors**
+An oscillator circuit consists of an amplifier and a feedback network that produces a positive feedback loop. The amplifier provides gain to the feedback signal, and the feedback network feeds a portion of the output signal back to the input, resulting in sustained oscillations at a specific frequency. The frequency of the oscillations is determined by the characteristics of the feedback network, which can be passive (resistors, capacitors, and inductors) or active (transistors or operational amplifiers).
 
-Capacitors play a crucial role in various electronic circuits and systems:
+There are several types of oscillators:
 
-**Filters**
-Capacitors can be used in combination with inductors to create low-pass, high-pass, and band-pass filters to control the flow of signals with specific frequencies in a circuit.
+LC Oscillators
+--------------
 
+LC oscillators, also known as tuned or tank circuit oscillators, are particularly suited for high-frequency applications due to their low phase noise and relatively low power consumption. They rely on the resonant behavior of the LC circuit, where the inductor (L) and capacitor (C) store and exchange energy. Some common types of LC oscillators include the Hartley, Colpitts, and Clapp oscillators. These oscillators are used in applications like RF transmitters, receivers, and frequency mixers, as well as in high-frequency test equipment.
 
-**Power Supplies**
-In power supply applications, capacitors help stabilize the output voltage by smoothing out voltage ripples and transient voltage spikes.
+Crystal Oscillators
+-------------------
 
+The piezoelectric properties of quartz crystals allow them to vibrate at a specific frequency when subjected to an electric field. This frequency is determined by the crystal's size, shape, and cut. The high stability and accuracy of crystal oscillators are particularly advantageous in applications like GPS receivers, microcontrollers, and telecommunications equipment. Some popular configurations of crystal oscillators include the Pierce, Butler, and Miller oscillators.
 
-**Oscillators**
-Capacitors, in combination with inductors and resistors, can create oscillating circuits that generate specific frequencies for applications like signal generation and frequency synthesis.
+RC Oscillators
+--------------
 
+RC oscillators are often used in applications where the required frequency stability and accuracy are not as stringent, such as in simple timing circuits, low-cost signal generators, and basic electronic experiments. Due to their simplicity, they are easy to design and implement, making them a popular choice for educational purposes and hobbyists. The most common RC oscillator types are phase shift and Wien bridge oscillators.
 
-In summary, capacitors are fundamental passive components in electronic circuits, characterized by their ability to store and release energy in the form of an electric field. They come in various types and are used in a wide range of applications, from filters and power supplies to oscillators and decoupling. Understanding the principles, types, and applications of capacitors is essential for anyone working with electronic circuits and systems. However, there are types of capacitances that we don't want in our circuits.
+Wien Bridge Oscillators
+-----------------------
 
-Stray and Parasitic Capacitance
-===============================
-Parasitic and stray capacitances are unintentional and often undesirable effects that occur in electronic circuits. They can lead to performance issues, inaccuracies in measurements, and signal degradation. Both types of capacitance arise from the physical layout and design of a circuit, including the arrangement and proximity of conductive traces, components, and wiring. In this brief introduction, we will discuss the origins and potential impacts of parasitic and stray capacitances on electronic circuits.
+Wien Bridge Oscillators (continued)
+In Wien Bridge oscillators, the bridge configuration of resistors and capacitors determines the frequency of oscillation. This type of oscillator can provide low distortion, stable oscillation frequency, and good frequency response. Applications include audio amplifiers, distortion analyzers, and precision oscillators for lab equipment. The oscillator's frequency can be adjusted by varying the values of the resistors or capacitors, making it a versatile choice for variable-frequency applications.
 
+Phase Shift Oscillators
+-----------------------
 
-Stray Capacitance and its Impact on Circuit Performance
-----------------------------------------
-Stray capacitance is an unintended and often undesirable effect that occurs in electronic circuits, causing potential performance issues and inaccuracies in measurements. This phenomenon is primarily caused by the physical layout of a circuit, including the spacing and arrangement of conductive traces, components, and wiring. In this brief introduction, we will discuss the origins of stray capacitance and its potential impact on circuit performance.
+Phase Shift oscillators use a feedback network consisting of multiple RC sections to create a phase shift of 180 degrees at a specific frequency. This type of oscillator generates a sinusoidal output waveform and is often used in low-frequency applications such as audio synthesizers and function generators.
 
+Relaxation Oscillators
+----------------------
 
-**Stray Capacitance in High-Frequency Applications**
+Relaxation oscillators generate non-sinusoidal waveforms such as square, triangular, or sawtooth waves. They use a combination of active devices (such as transistors, operational amplifiers, or comparators) and passive components (resistors and capacitors) to produce output waveforms with sharp transitions. Relaxation oscillators are used in applications like pulse generators, timers, and waveform synthesizers.
 
-Stray capacitance is particularly troublesome in high-frequency applications, such as radio frequency (RF) circuits, because the rapid changes in voltage can exacerbate the effects of stray capacitance. Signal loss, reflections, and crosstalk can occur, reducing the overall performance of the circuit. Designers can mitigate the impact of stray capacitance by using specialized components, such as high-frequency capacitors, which exhibit low parasitic capacitance and low loss. Additionally, arranging components and conductive traces to minimize mutual capacitance and coupling can further reduce the impact of stray capacitance on high-frequency circuits.
+Each type of oscillator has its unique advantages and applications, depending on factors such as desired frequency range, stability, and waveform shape. Designers can choose the most suitable oscillator type based on the specific requirements of their projects.
 
-**Minimizing Stray Capacitance in Measurements**
+===========================
+Applications of Oscillators
+===========================
 
-Calibration is a crucial process that can help minimize the effect of stray capacitance on measurement accuracy. By using a known reference object, the capacitance meter or network analyzer can account for the presence of stray capacitance and correct the measurements accordingly. This process involves comparing the measured value of the reference object to its known value, calculating the difference, and adjusting the measurement system to account for this discrepancy. Calibration should be performed periodically to maintain the highest level of measurement accuracy and account for any drift in the instrument's performance over time.
+Oscillators play a crucial role in various electronic circuits and systems:
 
-**Guard Traces for Isolation from External Influences**
+Signal Generators
+-----------------
 
-Guard traces are an effective technique for isolating the object being measured from external conductive objects that may introduce stray capacitance. By surrounding the measurement area with a conductive shield connected to a low-impedance ground, the guard trace can intercept stray electric fields and prevent them from affecting the measurement signal. This technique is especially useful in low-frequency applications, where the shield's capacitance can be made sufficiently large to effectively isolate the measurement area from external influences.
+Oscillators are used in signal generators to generate signals with specific frequencies and waveforms. These signals are used in a variety of applications, such as testing, measurement, and calibration.
 
+Frequency Synthesizers
+----------------------
 
-Parasitic Capacitance and Techniques to Minimize its Effects
---------------------------------------------------
-Parasitic capacitance is an undesired phenomenon in electronic circuits, stemming from unintentional capacitance present in conductive traces, components, and other circuit elements. It arises due to the physical layout and design of a circuit and can cause a range of issues that degrade circuit performance, such as signal distortion, reduced bandwidth, and diminished signal-to-noise ratio. In this brief introduction, we will explore the origins of parasitic capacitance, its impact on electronic circuits, and methods to minimize its effects.
+Frequency synthesizers are used to generate a range of frequencies from a single reference frequency. They are commonly used in communication systems, where multiple frequencies are required for different channels and bandwidths.
 
-**Utilizing Low-Capacitance Components**
+Clocks
+------
 
-To reduce the impact of parasitic capacitance on circuit performance, designers can use components with low capacitance values. Ceramic capacitors and film capacitors offer lower parasitic capacitance due to their compact size and low-loss dielectric materials. By using these components in high-frequency applications, designers can minimize the impact of parasitic capacitance and reduce signal distortion, bandwidth limitations, and other performance issues associated with this
+Oscillators are used in clocks to generate a steady and accurate reference frequency. This frequency is used to synchronize the operation of other circuits in the system, ensuring reliable and consistent performance.
 
+In summary, inductors are fundamental passive components in electronic circuits, characterized by their ability to store and release energy in the form of a magnetic field. They come in various types and are used in a wide range of applications, from filters and power supplies to oscillators and noise suppression. Understanding the principles, types, and applications of inductors is essential for anyone working with electronic circuits and systems. But there are types of inductances that we
+don't want in our circuits.
 
-Hands on Experiment: Measuring Capacitance with Red Pitaya using Rise/Fall Time Method
-========================
-The rise/fall time method is a simple and efficient way to measure the capacitance of a capacitor. It involves charging the capacitor to a known voltage, and then discharging it through a resistor. The time it takes for the voltage to rise or fall to a certain percentage of its original value is measured, and the capacitance of the capacitor can be calculated.
+In summary, oscillators are fundamental components in electronic circuits, characterized by their ability to generate signals that oscillate at a specific frequency. They come in various types and are used in a wide range of applications, from signal generators and frequency synthesizers to clocks and other timing circuits.
 
-In this experiment, we will measure the capacitance of a pack of 10 10uF capacitors with 5% tolerance using the rise/fall time method with a Red Pitaya board. We will also calculate the standard deviation of the capacitance values obtained.
+=================================================================
+Hands on Experiment: Measuring RLC circuits Oscillating frequency
+=================================================================
 
-**Experimental Setup**
+The RLC circuit consists of a resistor, an inductor, and a capacitor connected in series. In this experiment, we will use a 100 ohm resistor, a 1mH inductor, and a 10 nF capacitor. We will connect the RLC circuit to the Red Pitaya board following the image:
 
-For this experiment, we will be using a simple circuit consisting of a 1k resistor in series with our capacitor. We will be measuring the voltage rising time using the Red Pitaya's Oscilloscope function. To power the circuit, we will use the 3.3V outputs on the Red Pitaya through a button switch, which we will use to start charging the capacitor.
+.. image:: img/3.4/1.2.jpg
+    :name: Circuit
+    :align: center
 
-To set up the circuit, you can refer to the picture below:
+To set up the circuit, connect the RLC circuit to the Red Pitaya board as shown in the diagram. Connect the probe IN1 to resistor and probe IN2 to the capacitor and indutor.
 
-.. image:: img/3.2/1.3.jpg
-	:name: Circuit
-	:align: center
+Hold the button to charge the circuit on 3.3V and press run. Release the button and the response should be captured. You should see an oscillating voltage, slowly decreasing:
 
-Once the circuit is set up, you can run the Oscilloscope app on the Red Pitaya's home page and set up the trigger to IN1 to single mode. Make sure to set the trigger slightly above the displayed noise level.
+.. image:: img/3.4/1.3.png
+    :name: Wave
+    :align: center
 
-To perform the measurement, press the button to charge the capacitor. You should get a result similar to the picture below, with a slightly different rise time:
+To measure the frequency of the oscillations, use the Cursor function on the Oscilloscope app, which displays the X,Y (time and voltage) value of the desired point. Measure the time interval for one complete cycle of the oscillation, from peak to peak.
 
-.. image:: img/3.2/1.4.png
-	:name: Trigger
-	:align: center
+.. image:: img/3.4/1.4.png
+    :name: Cursors
+    :align: center
 
-To find the time interval from 10% to 90% of the final voltage, use the Cursor function on the Oscilloscope app, which displays the X,Y (time and voltage) value of the desired point.
+The frequency of the oscillation can then be calculated using the formula:
 
-.. image:: img/3.2/1.5.png
-	:name: Cursor
-	:align: center
+.. math:: f = \frac{1}{T}
 
-The capacitance can then be calculated using the formula:
+where f is the frequency in hertz (Hz), and T is the time interval for one complete cycle of the oscillation in seconds.
 
-.. math:: C = \frac{2 \pi R t}{\ln\left(\frac{V_f}{V_i}\right)}
+The results of the experiment for the RLC circuit are as follows:
 
-where C is the capacitance in farads, R is the resistance value of the resistor in ohms, t is the rise time in seconds, Vi is the initial voltage across the capacitor, and Vf is the final voltage across the capacitor, we can calculate the capacitance of each capacitor.
+Measured time interval for one complete cycle of the oscillation (T) = 0.0000218 seconds
 
-The results of the experiment for the 10 capacitors with 100uF and 5% tolerance are as follows:
+Frequency (f) = 45.8 kHz
 
-Capacitor 1: 99.23 uF
+We can confrim our measurements using the values of elements, and calculate the resonant frequency of the RLC circuit using the formula:
 
-Capacitor 2: 100.45 uF
+.. math:: f_{resonant} = \frac{1}{2 \pi \sqrt{LC}}
 
-Capacitor 3: 98.67 uF
+where L is the inductance in henries, and C is the capacitance in farads.
 
-Capacitor 4: 100.14 uF
+The calculated resonant frequency of the RLC circuit is:
 
-Capacitor 5: 101.51 uF
+.. math:: f_{resonant} = \frac{1}{2 \pi \sqrt{(1 \times 10^{-3}) \times (10 \times 10^{-9})}} = 50.329 kHz
 
-Capacitor 6: 97.92 uF
-
-Capacitor 7: 98.56 uF
-
-Capacitor 8: 99.79 uF
-
-Capacitor 9: 102.15 uF
-
-Capacitor 10: 99.63 uF
-
-Using the values we obtained earlier, we can calculate the mean capacitance as:
-
-.. math:: \text{mean} = \frac{99.23 + 100.45 + 98.67 + 100.14 + 101.51 + 97.92 + 98.56 + 99.79 + 102.15 + 99.63}{10} = 99.85 \text{ uF}
-
-Then, we can calculate the variance as:
-
-.. math:: \text{variance} = \frac{(99.23 - 99.85)^2 + (100.45 - 99.85)^2 + (98.67 - 99.85)^2 + (100.14 - 99.85)^2 + (101.51 - 99.85)^2 + (97.92 - 99.85)^2 + (98.56 - 99.85)^2 + (99.79 - 99.85)^2 + (102.15 - 99.85)^2 + (99.63 - 99.85)^2}{9} = 1.283 \text{ uF}^2
-
-Finally, we can calculate the standard deviation as the square root of the variance:
-
-.. math:: \text{standard deviation} = \sqrt{\text{variance}} = \sqrt{1.283} = 1.13 \text{ uF}
-
-Therefore, the standard deviation of the capacitance values for the 100uF capacitors is 1.13 uF. This tells us that the values are relatively close to each other and that the capacitors are within the expected tolerance range.
-
+The measured frequency of the oscillation is close to the calculated resonant frequency, which indicates that the RLC circuit is operating as expected, and the error we got came from the tolerances of the elements.
 
 Conclusion
--------------------
-In conclusion, the rise/fall time method using the Red Pitaya proved to be a reliable and accurate way to measure the capacitance of our capacitors. By measuring the voltage rise or fall time of the capacitor and using the appropriate formulas, we were able to obtain the capacitance values with good precision. The calculated standard deviation of the capacitance values showed that our capacitors were within the expected tolerance range of 5%.
+----------
 
-This experiment not only provided us with an understanding of the rise/fall time method, but also with the opportunity to practice using the Red Pitaya's oscilloscope and pulse generator features. These skills are essential for any electronics engineer or hobbyist who works with capacitors and other electronic components.
+In this experiment, we used the Red Pitaya to measure the frequency of an oscillating signal generated by an RLC circuit. We demonstrated how the oscilloscope application and frequency measurement tool in the Red Pitaya web interface can be used to measure the frequency of a signal. The Red Pitaya is a versatile and affordable instrument that can be used for a wide range of measurements, including frequency measurement.
 
 Written by Andraž Pirc
 
-This teaching material was created by `Red Pitaya <https://www.redpitaya.com/>`_ & `Zavod 404 <https://404.si/>`_ in the scope of the `Smart4All <https://smart4all.fundingbox.com/>`_ innovation project.
+This teaching material was created by `Red Pitaya <https://www.redpitaya.com/>`_& `Zavod 404 <https://404.si/>`_ in the scope of the `Smart4All <https://smart4all.fundingbox.com/>`_ innovation project.
