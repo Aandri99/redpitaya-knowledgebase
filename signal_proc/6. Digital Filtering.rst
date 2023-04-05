@@ -1,23 +1,23 @@
-=============================================
+############################################
 ECE2170: Digital Filtering on the Red Pitaya
-=============================================
+############################################
 
+======
 Theory
-==========
+======
 
 Observe behavior for multiple digital filters implemented via the Red Pitaya
-
 
 Background
 ----------
 
 LTI systems in the Z-domain
-~~~~~~~~~~~~~~~~~~~~~~~~~~~
+^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 Reminder all discrete time LTI systems can be represented in a canonical
 form of:
 
-.. math:: H(z) = \frac{b_{0} + b_{1}z^{- 1} + b_{2}z^{- 2} + \ldots + b_{k}z^{- k}}{a_{0} + a_{1}z^{- 1} + a_{2}z^{- 2} + \ldots + a_{m}z^{- m}}\ where\ k,m\mathbb{\in N} 
+.. math:: H(z) = \frac{b_{0} + b_{1}z^{- 1} + b_{2}z^{- 2} + \ldots + b_{k}z^{- k}}{a_{0} + a_{1}z^{- 1} + a_{2}z^{- 2} + \ldots + a_{m}z^{- m}}\ where\ k,m\mathbb{\in N}
 
 Where the coefficients of each expression can be viewed as the
 coefficients in the difference equation:
@@ -37,12 +37,9 @@ generator board to IN1 of itself to see the response of the circuits
 more clearly and to measure the Frequency response with the Bode
 analyzer. |Diagram Description automatically generated|
 
-
+=====
 Tasks
-===========
-
-
-
+=====
 
 All-Pass Filter – Delay Element
 -------------------------------
@@ -58,7 +55,7 @@ filter, namely a delay filter. This kind of filter purely provides a
 delayed version of the input as it’s output.
 
 Measurement
-~~~~~~~~~~~
+^^^^^^^^^^^
 
 1. Note down the Bode plot from the LTI workbench for both gain and
    phase(Note for some filters, you may want to do this over two
@@ -78,7 +75,7 @@ Measurement
    c. A triangle wave of 1kHz is applied
 
 Analysis
-~~~~~~~~
+^^^^^^^^
 
 .. math:: H(z) = \frac{z^{- k}}{1}
 
@@ -98,7 +95,7 @@ An :math:`n`-tap moving average filter has the form:
 
 .. math:: H(z) = \frac{1}{N}\left\lbrack \frac{1 + z^{- 1} + z^{- 2} + \ldots + z^{- N - 1}}{1} \right\rbrack
 
-This is accomplished by setting :math:`b_{k} = 1/N\ ` where
+This is accomplished by setting :math:`b_{k} = 1/N\` where
 :math:`k \in \left\{ 0,1,2,\ldots,N - 1\ :N\mathbb{\in N} \right\}`.
 This kind of filter is called a moving average or boxcar filter, due to
 its nature of taking a local average of :math:`n` samples at every
@@ -108,7 +105,7 @@ size.
 .. _measurement-1:
 
 Measurement
-~~~~~~~~~~~
+^^^^^^^^^^^
 
 1. Note down the Bode plot from the LTI workbench for both gain and
    phase for the provided value of :math:`N`, describing what happens as
@@ -134,7 +131,7 @@ Measurement
 .. _analysis-1:
 
 Analysis
-~~~~~~~~
+^^^^^^^^
 
 1. What class of filter does this look like? (high-pass, low-pass,
    band-pass, band-stop)
@@ -157,7 +154,7 @@ Enter the following transfer function into the LTI workbench:
 .. _measurement-2:
 
 Measurement
-~~~~~~~~~~~
+^^^^^^^^^^^
 
 1. Note down the Bode plot from the LTI workbench for both gain and
    phase. (Note for some filters, you may want to do this over two
@@ -179,7 +176,7 @@ Measurement
 .. _analysis-2:
 
 Analysis
-~~~~~~~~
+^^^^^^^^
 
 1. Write out the difference equation of this filter.
 
@@ -203,7 +200,7 @@ This is accomplished by setting :math:`b_{0} = 0.5,\ b_{1} = - 0.5`.
 .. _measurement-3:
 
 Measurement
-~~~~~~~~~~~
+^^^^^^^^^^^
 
 1. Note down the Bode plot from the LTI workbench for both gain and
    phase, and describe what happens as the frequency of the input
@@ -221,14 +218,14 @@ Measurement
 .. _analysis-3:
 
 Analysis
-~~~~~~~~
+^^^^^^^^
 
-1. What does removing the common factor of :math:`1/2\ ` do to the
-   filter? Why do you think the factor of :math:`1/2\ `\ was included?
+1. What does removing the common factor of :math:`1/2\` do to the
+   filter? Why do you think the factor of :math:`1/2\`\ was included?
 
 2. Write out the difference equation of this filter.
 
-.. math:: y\lbrack n\rbrack = \frac{1}{2}\left( x\lbrack n\rbrack - x\lbrack n - 1\rbrack \right)
+    .. math:: y\lbrack n\rbrack = \frac{1}{2}\left( x\lbrack n\rbrack - x\lbrack n - 1\rbrack \right)
 
 3. In the previous lab, we showcased that high-pass filters can be used
    to approximate derivative operations. At what frequency does this
@@ -246,14 +243,14 @@ Enter the following transfer function into the LTI workbench:
 .. _measurement-4:
 
 Measurement
-~~~~~~~~~~~
+^^^^^^^^^^^
 
-4. Note down the Bode plot from the LTI workbench for both gain and
+1. Note down the Bode plot from the LTI workbench for both gain and
    phase. (Note for some filters, you may want to do this over two
    screenshots, as the magnitude and phase are plotted on a common axis,
    even if one is in dB and the other is in degrees)
 
-5. Show the resulting waveform in the Red Pitaya/Spectrum Analyzer scope
+2. Show the resulting waveform in the Red Pitaya/Spectrum Analyzer scope
    object for
 
    a. A sine wave of 1kHz is applied
@@ -262,17 +259,17 @@ Measurement
 
    c. A triangle wave of 1kHz is applied
 
-6. Describe what happens as the frequency of the input signals are
+3. Describe what happens as the frequency of the input signals are
    increased or decreased.
 
 .. _analysis-4:
 
 Analysis
-~~~~~~~~
+^^^^^^^^
 
-3. Write out the difference equation of this filter.
+1. Write out the difference equation of this filter.
 
-4. [STRIKEOUT:In the previous lab, we showcased that low-pass filters
+2. [STRIKEOUT:In the previous lab, we showcased that low-pass filters
    can be used to approximate integral operations. At what frequency
    does this filter do a passable job of implementing this operation?]
 
