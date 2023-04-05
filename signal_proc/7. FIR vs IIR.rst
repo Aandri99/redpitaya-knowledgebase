@@ -1,8 +1,8 @@
-=========================================
+#########################################
 ECE2170: FIR vs. IIR filters - Red Pitaya
-=========================================
+#########################################
 
-
+=====
 Goals
 =====
 
@@ -23,7 +23,7 @@ form of:
 Where the coefficients of each expression can be viewed as the
 coefficients in the difference equation:
 
-.. math:: y\lbrack n\rbrack\left( a_{0} + a_{1}\delta\lbrack n - 1\rbrack + a_{2}\delta\lbrack n - 2\rbrack + \ldots + a_{m}\delta\lbrack n - m\rbrack \right) = x\lbrack n\rbrack\left( b_{0} + b_{1}\delta\lbrack n - 1\rbrack + b_{2}\delta\lbrack n - 2\rbrack + \ldots + b_{k}\delta\lbrack n - k\rbrack \right)\ 
+.. math:: y\lbrack n\rbrack\left( a_{0} + a_{1}\delta\lbrack n - 1\rbrack + a_{2}\delta\lbrack n - 2\rbrack + \ldots + a_{m}\delta\lbrack n - m\rbrack \right) = x\lbrack n\rbrack\left( b_{0} + b_{1}\delta\lbrack n - 1\rbrack + b_{2}\delta\lbrack n - 2\rbrack + \ldots + b_{k}\delta\lbrack n - k\rbrack \right)\
 
 Depending on the configurations of the transfer function, the filter can
 show various behaviors. This lab will demonstrate the differences
@@ -46,8 +46,8 @@ analyzer. |Diagram Description automatically generated|
 Tasks
 =====
 
-Running Sum Filter 
--------------------
+Running Sum Filter
+------------------
 
 This is a classical FIR filter that operates with the following
 difference equation
@@ -63,7 +63,7 @@ Where the final transfer function expression is simply the expansion of
 the M-th partial sum of a geometric series for :math:`|z| < 1`.
 
 MATLAB Analysis
-~~~~~~~~~~~~~~~
+^^^^^^^^^^^^^^^
 
 1. In the provided matlab script, vary the number of taps (value of
    :math:`M`) for the running sum filter and comment on as to how the:
@@ -85,7 +85,7 @@ MATLAB Analysis
    c. Pole zero plot
 
 Red Pitaya
-~~~~~~~~~~
+^^^^^^^^^^
 
 In the red pitaya’s LTI workbench, we can construct arbitrary transfer
 functions using the coefficients :math:`a_{k},b_{k}`\ where
@@ -101,27 +101,24 @@ This shows that all :math:`b_{k}` values are 1, and that
 1. Plot the frequency response of this filter when entered into the red
    pitaya LTI workbench.
 
-|Chart Description automatically generated with medium
-confidence|\ |Chart, line chart Description automatically generated|
+    |Chart Description automatically generated with medium confidence|\ |Chart, line chart Description automatically generated|
 
 2. Show to resulting filtered waveforms/spectra to a:
 
    a. Square wave within the filter bandwidth
 
-
-.. image:: media/image7.4.jpeg
-   :alt: PitayaScreenshotSquareWave
-   :width: 4.26901in
-   :height: 2in
+    .. image:: media/image7.4.jpeg
+    :alt: PitayaScreenshotSquareWave
+    :width: 4.26901in
+    :height: 2in
 
    b. Square wave outside of the filter bandwidth
 
-.. image:: media/image7.5.jpeg
-	:name: Diagram Description automatically generated
-	:align: center
+    .. image:: media/image7.5.jpeg
+        :name: Diagram Description automatically generated
+        :align: center
 
-
-Resonant Filter 
+Resonant Filter
 ----------------
 
 This is a classical IIR filter that operates with the following
@@ -147,7 +144,7 @@ Which after some algebra, provides the transfer function of:
 .. _matlab-analysis-1:
 
 MATLAB Analysis
-~~~~~~~~~~~~~~~
+^^^^^^^^^^^^^^^
 
 1. In the provided matlab script, vary the feedback delay (value of
    :math:`N`) for the resonant filter and comment on as to how the:
@@ -161,7 +158,7 @@ MATLAB Analysis
 .. _red-pitaya-1:
 
 Red Pitaya
-~~~~~~~~~~
+^^^^^^^^^^
 
 In the red pitaya’s LTI workbench, we can construct arbitrary transfer
 functions using the coefficients :math:`a_{k},b_{k}`\ where
@@ -179,34 +176,33 @@ and that and that :math:`a_{0},a_{N} = 1` and
 1. Plot the frequency response of this filter when entered into the red
    pitaya LTI workbench.
 
-.. image:: media/image7.6.png
-   :alt: Chart Description automatically generated
-   :width: 6.5in
-   :height: 3.25in
+    .. image:: media/image7.6.png
+        :alt: Chart Description automatically generated
+        :width: 6.5in
+        :height: 3.25in
 
-.. image:: media/image7.7.png
-   :alt: Chart, line chart Description automatically generated
-   :width: 6.5in
-   :height: 4.95764in
+    .. image:: media/image7.7.png
+        :alt: Chart, line chart Description automatically generated
+        :width: 6.5in
+        :height: 4.95764in
 
 2. Show to resulting filtered waveforms/spectra to a:
 
-   a. Square wave within the filter resonance
+    a. Square wave within the filter resonance
 
-..
-   .. image:: media/image7.8.png
-      :alt: Chart Description automatically generated
-      :width: 4.5426in
-      :height: 2.47222in
+    .. image:: media/image7.8.png
+        :alt: Chart Description automatically generated
+        :width: 4.5426in
+        :height: 2.47222in
 
-b. Step Response of the filter outside of the resonance
+    b. Step Response of the filter outside of the resonance
 
-.. image:: media/image7.9.jpeg
-   :width: 6.49028in
-   :height: 3.04306in
+    .. image:: media/image7.9.jpeg
+        :width: 6.49028in
+        :height: 3.04306in
 
-Filter Cascade 
----------------
+Filter Cascade
+--------------
 
 As mentioned previously, cascading two filters is described simply by
 multiplying their transfer functions.
@@ -215,12 +211,12 @@ multiplying their transfer functions.
 
 Perform analysis on the resulting cascaded filter :math:`H_{new}(z)`
 where :math:`H_{1}(z),H_{2}(z)` are the running sum filter with 6 taps
-(:math:`M = 6)`, and the resonant filter with order 6 (:math:`N = 5)`.
+(:math:`M = 6`), and the resonant filter with order 6 (:math:`N = 5`).
 
 .. _matlab-analysis-2:
 
 MATLAB Analysis
-~~~~~~~~~~~~~~~
+^^^^^^^^^^^^^^^
 
 Using the previous two filter transfer function in MATLAB, calculate the
 result of cascading the filters.
@@ -240,44 +236,44 @@ result of cascading the filters.
 .. _red-pitaya-2:
 
 Red Pitaya
-~~~~~~~~~~
+^^^^^^^^^^
 
 Enter the previously calculated transfer function into the Red Pitaya.
 
 1. Plot the frequency response of this filter
 
-.. image:: media/image7.10.png
-   :alt: Chart, line chart Description automatically generated
-   :width: 6.5in
-   :height: 3.32361in
+    .. image:: media/image7.10.png
+        :alt: Chart, line chart Description automatically generated
+        :width: 6.5in
+        :height: 3.32361in
 
-.. image:: media/image7.11.png
-   :alt: Chart, line chart Description automatically generated
-   :width: 6.5in
-   :height: 5.07153in
+    .. image:: media/image7.11.png
+        :alt: Chart, line chart Description automatically generated
+        :width: 6.5in
+        :height: 5.07153in
 
 2. Show to resulting filtered waveforms/spectra to a square wave at:
 
    a. Square wave within the filter bandwidth
 
-
    .. image:: media/image7.12.jpeg
       :width: 6.49028in
       :height: 3.04306in
 
-b. Square wave outside of the filter bandwidth
+    b. Square wave outside of the filter bandwidth
 
-.. image:: media/image7.13.jpeg
-	:name: inverting schmitt screencap
-	:align: center
-
+    .. image:: media/image7.13.jpeg
+        :name: inverting schmitt screencap
+        :align: center
 
 .. |Diagram Description automatically generated| image:: media/image7.1.png
    :width: 6.5in
    :height: 1.87014in
+
 .. |Chart Description automatically generated with medium confidence| image:: media/image7.2.png
    :width: 1.96062in
    :height: 1.5in
+
 .. |Chart, line chart Description automatically generated| image:: media/image7.3.png
    :width: 1.96997in
    :height: 1.5in
