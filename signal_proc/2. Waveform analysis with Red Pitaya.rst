@@ -1,16 +1,17 @@
-=========================================================
+#########################################################
 ECE2170: Measuring external waveforms with the Red Pitaya
-=========================================================
+#########################################################
 
-
-Goals:
-======
+=====
+Goals
+=====
 
 View external signals via the red pitaya, and identify various physical
 phenomena associated with discrete time systems.
 
-Tasks and Questions:
-================
+===================
+Tasks and Questions
+===================
 
 For these tasks, you will be viewing multiple waveforms with the Red
 Pitaya’s Web applications. We will be providing external signals via the
@@ -26,7 +27,7 @@ Single channel analysis
 in MATLAB, as described in the slides and class time instruction.**
 
 Audio DAC Bandwidth
-~~~~~~~~~~~~~~~~~~~
+^^^^^^^^^^^^^^^^^^^
 
 We have mentioned that audio devices tend to have bandwidth limits in
 the range of 20kHz due to their sample rate. Let’s experimentally
@@ -65,7 +66,7 @@ frequency.
 +-----------------------------------------------------------------------+
 
 Audio DAC Bit depth and quality
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 In addition to a sample rate, Audio DACs have a known number of
 quantized states. We will observe how this can appear by using multiple
@@ -76,7 +77,7 @@ For all tests, use a sinewave excitation signal with a frequency of
 frequency domains.
 
 USB Soundcard
-~~~~~~~~~~~~~
+^^^^^^^^^^^^^
 
 a) Time domain
 
@@ -95,14 +96,14 @@ a) Time domain
 b) Frequency Domain
 
 PC Soundcard
-~~~~~~~~~~~~
+^^^^^^^^^^^^
 
 c) Time domain
 
 d) Frequency Domain
 
 (Optional) Red Pitaya Output
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 The Re Pitaya also has a DAC, which is what the analog outputs employ.
 We have already viewed some of the signals of the Red Pitaya before, but
@@ -121,8 +122,8 @@ Dual Channel analysis
 **For all of this analysis, both channels will have non-zero values in
 MATLAB.**
 
-Cross talk 
-~~~~~~~~~~~
+Cross talk
+^^^^^^^^^^
 
 We previously observed the effect of cross talk between input channels
 of the red pitaya. Let’s try to better quantify this now that we can
