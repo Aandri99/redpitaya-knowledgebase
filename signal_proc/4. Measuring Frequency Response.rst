@@ -1,20 +1,21 @@
-============================================================================
+############################################################################
 ECE2170: Measuring the Frequency response of LTI Systems with the Red Pitaya
-============================================================================
+############################################################################
 
-
+=================
 Goals of this lab
 =================
 
--  Perform analysis on simple LTI systems
+- Perform analysis on simple LTI systems
 
--  Measure frequency responses for simple LTI systems
+- Measure frequency responses for simple LTI systems
 
--  Use the knowledge of LTI systems to measure real world values of
+- Use the knowledge of LTI systems to measure real world values of
    physical components
 
--  Demonstrate the stacking nature of LTI systems
+- Demonstrate the stacking nature of LTI systems
 
+==========
 Background
 ==========
 
@@ -28,17 +29,17 @@ satisfies the principles of scalar multiplication and superposition.
 More mathematically, for vectors :math:`\mathbf{x,y}`, scalars
 :math:`\alpha,\beta`, the operator :math:`A` is linear if:
 
-.. math:: A\left( \alpha\mathbf{x} + \beta\mathbf{y} \right) = \alpha A\left( \mathbf{x} \right) + \beta A\left( \mathbf{y} \right)\ 
+.. math:: A\left( \alpha\mathbf{x} + \beta\mathbf{y} \right) = \alpha A\left( \mathbf{x} \right) + \beta A\left( \mathbf{y} \right)\
 
 is satisfied. Examples of linear operators are:
 
--  Differentiation/Integration
+- Differentiation/Integration
 
--  Convolution
+- Convolution
 
--  Gradient/Divergence/Curl
+- Gradient/Divergence/Curl
 
--  Laplace/Fourier transforms
+- Laplace/Fourier transforms
 
 Note that if there are multiple Linear systems, their cascaded effect
 can be described by composing each subsequent system with the output of
@@ -66,34 +67,34 @@ operation is now reduced to multiplication.
 Where :math:`H(f)` is now the transfer function or frequency response of
 the system. Canonically, the transfer function is written as:
 
-.. math:: H(f) = \frac{Y(f)}{X(f)} = \frac{a_{0} + a_{1}f + a_{2}f^{2} + \ldots + a_{n - 1}f^{n}}{b_{0} + b_{1}f + b_{2}f^{2} + \ldots + b_{m - 1}f^{m}};n,m \in \mathbb{Z}^{+}\ 
+.. math:: H(f) = \frac{Y(f)}{X(f)} = \frac{a_{0} + a_{1}f + a_{2}f^{2} + \ldots + a_{n - 1}f^{n}}{b_{0} + b_{1}f + b_{2}f^{2} + \ldots + b_{m - 1}f^{m}};n,m \in \mathbb{Z}^{+}\
 
 Every LTI system can be described by a given transfer function, with
 various systems being formed by various coefficients :math:`a,b`. In
 this lab, we will form a small number of systems with real components,
 and examine their behaviors.
 
-Materials 
-----------
+Materials
+---------
 
 For this lab, you will need:
 
--  1x Red Pitaya
+- 1x Red Pitaya
 
--  3x SMA to BNC adapters
+- 3x SMA to BNC adapters
 
--  3x BNC to alligator clamp cables
+- 3x BNC to alligator clamp cables
 
--  1x Breadboard
+- 1x Breadboard
 
--  1x package of passive components
+- 1x package of passive components
 
 Connect the cables to the Red Pitaya via the adapters as shown in Fig.
 1, noting that we need IN1,IN2, and OUT1 connections.
 
 .. image:: media/image4.1.jpeg
-	:name: Red Pitaya hardware configuration
-	:align: center
+    :name: Red Pitaya hardware configuration
+    :align: center
 
 Fig. 1: Red Pitaya hardware configuration
 
@@ -101,11 +102,11 @@ A quick introduction to Breadboards and Passive components
 ----------------------------------------------------------
 
 Breadboards
-~~~~~~~~~~~
+^^^^^^^^^^^
 
 .. image:: media/image4.2.png
-	:name: Breadboard
-	:align: center
+    :name: Breadboard
+    :align: center
 
 Bread boards are arrays of metal contacts internally tied together on a
 row wise basis (a,b,c,d,e) that are electrically separated on the
@@ -116,18 +117,18 @@ common terminals that are used through the circuit (as in the case of
 common, ground, or power supply nodes.
 
 Passives
-~~~~~~~~
+^^^^^^^^
 
 .. image:: media/4.3.jpg
-	:name: components
-	:align: center
+    :name: components
+    :align: center
 
 Resistors
 ^^^^^^^^^
 
 .. image:: media/4.4.jpg
-	:name: Resistors
-	:align: center
+    :name: Resistors
+    :align: center
 
 Resistors are a general element that obey Ohm’s law:
 
@@ -140,8 +141,8 @@ Capacitors
 ^^^^^^^^^^
 
 .. image:: media/4.5.jpg
-	:name: Capacitors
-	:align: center
+    :name: Capacitors
+    :align: center
 
 Capacitors have the Current-voltage relation:
 
@@ -156,8 +157,8 @@ Potentiometers
 ^^^^^^^^^^^^^^
 
 .. image:: media/4.56.jpg
-	:name: Potentiometer
-	:align: center
+    :name: Potentiometer
+    :align: center
 
 Potentiometers are three terminal devices consist of a resistor and a
 sliding contact that effectively breaks the resistor into two separate
@@ -169,15 +170,14 @@ total potentiometer resistance is distributed to each branch.
    :width: 4.13879in
    :height: 2.32859in
 
-
 From:
 |potenciometer|
 
 .. |potenciometer| raw:: html
 
- <a href=https://www.electrical4u.com/potentiometer/ target="_blank">Electrical4u potentiometer</a>
+    <a href=https://www.electrical4u.com/potentiometer/ target="_blank">Electrical4u potentiometer</a>
 
-
+====================
 Tasks / Measurements
 ====================
 
@@ -188,18 +188,18 @@ Build the Single stage RC circuit shown in Fig. 2, with
 :math:`R = 10k\Omega`,\ :math:`C = 0.47\mu F`.
 
 .. image:: media/image4.7.png
-	:name: SpiceCircuit
-	:align: center
+    :name: SpiceCircuit
+    :align: center
 
 .. image:: media/image4.8.jpeg
-	:name: Breadboardcircuit
-	:align: center  
+    :name: Breadboardcircuit
+    :align: center  
 
 Fig. 2: (left) schematic of the single stage RC circuit, (right)
 implementation on breadboard
 
 Analysis
-~~~~~~~~
+^^^^^^^^
 
 The claimed transfer function of this circuit is
 
@@ -215,7 +215,7 @@ Where :math:`j = \sqrt{- 1}` is the imaginary unit.
 
 3. What class (low-pass, high-pass, band-pass, band-stop) of filter is
    this? (This is equivalent to asking what happens to
-   :math:`\left| T(f) \right|` as :math:`f\ `\ gets lower or higher?)
+   :math:`\left| T(f) \right|` as :math:`f\`\ gets lower or higher?)
 
 4. At what frequency does
    :math:`\left| T(f) \right| = \frac{1}{\sqrt{2}} \approx 0.707`? (This
@@ -227,8 +227,9 @@ Where :math:`j = \sqrt{- 1}` is the imaginary unit.
 5. | (optional) What would happen if I swapped the input and output
      ports?
    | (Hint: is there any current flowing through the resistor?)
+
 Measurement
-~~~~~~~~~~~
+^^^^^^^^^^^
 
 Using the Red Pitaya’s Bode Analyzer tool, measure the frequency
 response (:math:`\left| T(f) \right|`).
@@ -236,62 +237,62 @@ response (:math:`\left| T(f) \right|`).
 1. Connect the Red Pitaya to the circuit, also known as the Device Under
    Test (DUT)), as shown below
 
-.. image:: media/image4.9.png
-	:name: PitayaSchematic
-	:align: center
+    .. image:: media/image4.9.png
+        :name: PitayaSchematic
+        :align: center
 
+    .. image:: media/image4.9.png
+        :name: PitayaSchematic
+        :align: center
 
-.. image:: media/image4.9.png
-	:name: PitayaSchematic
-	:align: center
+   (Source: |bode_analyzer|)
 
-   (from :
-   https://redpitaya.readthedocs.io/en/latest/appsFeatures/apps-featured/bode/bode.html)
+    .. |bode_analyzer| raw:: html
+
+        <a href="https://en.wikipedia.org/wiki/Decibel" target="_blank">Wikipedia dB Scale</a>
 
 2. Connect to the Red Pitaya and select the Bode Analyzer tool.
 
-.. image:: media/image4.10.png
-	:name: Menu
-	:align: center
+    .. image:: media/image4.10.png
+        :name: Menu
+        :align: center
 
-.. image:: media/image4.10.png
-	:name: Menu
-	:align: center
+    .. image:: media/image4.10.png
+        :name: Menu
+        :align: center
 
-   A more detailed description of the Bode analyzer can be found here:
-   https://redpitaya.readthedocs.io/en/latest/appsFeatures/apps-featured/bode/bode.html
+   A more detailed description of the Bode analyzer can be found here: |bode_analyzer|
 
 3. Click on the settings box to access the sweep settings
 
-.. image:: media/image4.11.png
-	:name: settings1
-	:align: center
+    .. image:: media/image4.11.png
+        :name: settings1
+        :align: center
 
 4. Configure the settings as shown below, we will find new sweep values
    as we go on, but these should be safe values to try
 
-
-   .. image:: media/image4.12.png
-	:name: settings2
-	:align: center
+    .. image:: media/image4.12.png
+        :name: settings2
+        :align: center
 
 5. Click RUN – The sweep can take awhile to complete.
 
-.. image:: media/image4.13.png
-	:name: settings3
-	:align: center
+    .. image:: media/image4.13.png
+        :name: settings3
+        :align: center
 
 6. To export data: click the Export tab, and either select Graph for a
    PNG of the chart, or CSV for the raw CSV data of the plot.
 
-.. image:: media/image4.14.png
-	:name: settingsexport
-	:align: center
+    .. image:: media/image4.14.png
+        :name: settingsexport
+        :align: center
 
-1. Show the plot of the measurement below:
+7. Show the plot of the measurement below:
 
 Comparison
-~~~~~~~~~~
+^^^^^^^^^^
 
 Respond to the following questions:
 
@@ -308,12 +309,12 @@ Build the Single stage RC circuit shown in Fig. 3, with
 :math:`R = 10k\Omega`,\ :math:`C = 0.47\mu F`.
 
 .. image:: media/image4.15.png
-	:name: Spice2
-	:align: center
+    :name: Spice2
+    :align: center
 
 .. image:: media/image4.16.jpeg
-	:name: BredboardCircuit2
-	:align: center	
+    :name: BredboardCircuit2
+    :align: center
 
 Fig. 3: (left) schematic of the single stage RC circuit, (right)
 implementation on breadboard
@@ -321,7 +322,7 @@ implementation on breadboard
 .. _analysis-1:
 
 Analysis
-~~~~~~~~
+^^^^^^^^
 
 The claimed transfer function of this circuit is
 
@@ -343,7 +344,7 @@ Where :math:`j = \sqrt{- 1}` is the imaginary unit.
 .. _measurement-1:
 
 Measurement
-~~~~~~~~~~~
+^^^^^^^^^^^
 
 Using the Red Pitaya’s Bode Analyzer tool, measure the frequency
 response (:math:`\left| T(f) \right|`) as described in section 3.1.2.
@@ -353,7 +354,7 @@ response (:math:`\left| T(f) \right|`) as described in section 3.1.2.
 .. _comparison-1:
 
 Comparison
-~~~~~~~~~~
+^^^^^^^^^^
 
 Respond to the following questions:
 
@@ -372,11 +373,11 @@ electrical contact. Ensure that the potentiometer pins used are the two
 furthest pins, as this will be the total resistance of the device.
 
 .. image:: media/image4.17.png
-	:name: Spice3
-	:align: center
+    :name: Spice3
+    :align: center
 .. image:: media/image4.18.jpeg
-	:name: BreadboardCircuit3
-	:align: center
+    :name: BreadboardCircuit3
+    :align: center
 
 Fig. 4: (left) schematic of the single stage RC circuit, (right)
 implementation on breadboard
@@ -384,7 +385,7 @@ implementation on breadboard
 .. _analysis-2:
 
 Analysis
-~~~~~~~~
+^^^^^^^^
 
 The claimed transfer function of this circuit is the same as in 3.1
 (reprinted here for courtesy)
@@ -404,7 +405,7 @@ measuring the transfer function again.
 .. _measurement-2:
 
 Measurement
-~~~~~~~~~~~
+^^^^^^^^^^^
 
 Using the Red Pitaya’s Bode Analyzer tool, measure the frequency
 response (:math:`\left| T(f) \right|`) as described in section 3.1.2.
@@ -415,7 +416,7 @@ Pay special attention to include the cutoff frequency in the sweep.
 .. _comparison-2:
 
 Comparison
-~~~~~~~~~~
+^^^^^^^^^^
 
 Respond to the following questions:
 
@@ -454,11 +455,12 @@ Build the RC circuit shown in below, with
 :math:`R_{1} = R_{2} = 10k\Omega`,\ :math:`\ C_{1} = C_{2} = 4.7nF`.
 
 .. image:: media/image4.19.png
-	:name: Spice4
-	:align: center
+    :name: Spice4
+    :align: center
+
 .. image:: media/image4.20.jpeg
-	:name: BreadboardCircuit
-	:align: center	
+    :name: BreadboardCircuit
+    :align: center
 
 Fig. 5: (left) schematic of the single stage RC circuit, (right)
 implementation on breadboard
@@ -466,7 +468,7 @@ implementation on breadboard
 .. _analysis-3:
 
 Analysis
-~~~~~~~~
+^^^^^^^^
 
 The claimed transfer function of this circuit is
 
@@ -488,7 +490,7 @@ Where :math:`j = \sqrt{- 1}` is the imaginary unit.
 .. _measurement-3:
 
 Measurement
-~~~~~~~~~~~
+^^^^^^^^^^^
 
 Using the Red Pitaya’s Bode Analyzer tool, measure the frequency
 response (:math:`\left| T(f) \right|`) as described in section 3.1.2.
@@ -498,7 +500,7 @@ response (:math:`\left| T(f) \right|`) as described in section 3.1.2.
 .. _comparison-3:
 
 Comparison
-~~~~~~~~~~
+^^^^^^^^^^
 
 Respond to the following questions:
 
@@ -523,11 +525,12 @@ as constant resistance. Once again, use the other 10K resistor as an
 electrical contact.
 
 .. image:: media/imageNewSpice.png
-	:name: Spice4
-	:align: center
+    :name: Spice4
+    :align: center
+
 .. image:: media/image4.22.jpeg
-	:name: BreadboardCircuti4
-	:align: center
+    :name: BreadboardCircuti4
+    :align: center
 
 Fig. 6: (left) schematic of the single stage RC circuit, (right)
 implementation on breadboard
@@ -535,7 +538,7 @@ implementation on breadboard
 .. _analysis-4:
 
 Analysis
-~~~~~~~~
+^^^^^^^^
 
 The claimed transfer function of this circuit is
 
@@ -557,7 +560,7 @@ Where :math:`j = \sqrt{- 1}` is the imaginary unit.
 .. _measurement-4:
 
 Measurement
-~~~~~~~~~~~
+^^^^^^^^^^^
 
 Using the Red Pitaya’s Bode Analyzer tool, measure the frequency
 response (:math:`\left| T(f) \right|`) as described in section 3.1.2.
@@ -571,12 +574,12 @@ response (:math:`\left| T(f) \right|`) as described in section 3.1.2.
 .. _comparison-4:
 
 Comparison
-~~~~~~~~~~
+^^^^^^^^^^
 
 Respond to the following questions:
 
-3. Does the shape of the frequency response match your expectation from
+1. Does the shape of the frequency response match your expectation from
    the analysis? Is there any point that stands out as odd?
 
-4. Find the -3dB point in the circuit, and compare this value to the one
+2. Find the -3dB point in the circuit, and compare this value to the one
    you previously calculated.
