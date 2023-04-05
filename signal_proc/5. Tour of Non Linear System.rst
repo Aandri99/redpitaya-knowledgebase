@@ -1,16 +1,16 @@
-========================================
+########################################
 ECE2170: Brief Tour of Nonlinear Systems
-========================================
+########################################
 
-
+=================
 Goals of this lab
 =================
 
--  Perform analysis on simple non-linear systems
+- Perform analysis on simple non-linear systems
 
--  Measure frequency responses for simple non-linear systems
+- Measure frequency responses for simple non-linear systems
 
--  Demonstrate use-cases for non-linear systems
+- Demonstrate use-cases for non-linear systems
 
 Background
 ==========
@@ -25,33 +25,32 @@ eigenfunctions; a single sinusoid input does not provide a single
 sinusoid out. In this lab we will do some preliminary analysis to see
 the effects of such a system.
 
-Materials 
-----------
+Materials
+---------
 
 For this lab, you will need:
 
--  1x Red Pitaya
+- 1x Red Pitaya
 
--  3x SMA to BNC adapters
+- 3x SMA to BNC adapters
 
--  3x BNC to alligator clamp cables
+- 3x BNC to alligator clamp cables
 
--  1x Breadboard
+- 1x Breadboard
 
--  1x package of passive components
+- 1x package of passive components
 
 Connect the cables to the Red Pitaya via the adapters as shown in Fig.
 1, noting that we need IN1,IN2, and OUT1 connections.
 
 .. image:: media/image5.1.jpeg
-	:name: PitayaCpnnection
-	:align: center
-
+    :name: PitayaCpnnection
+    :align: center
 
 Fig. 1: Red Pitaya hardware configuration
 
-A quick introduction to diodes 
--------------------------------
+A quick introduction to diodes
+------------------------------
 
 Diodes are a semiconductor device that is formed by a PN junction. The
 current-voltage (I-V) relation of the device can be described by the
@@ -81,23 +80,18 @@ reflected in the package by a stripe on the end of the package that
 mirrors the line in the diode symbol.
 
 .. image:: media/image5.2.png
-	:name: Diodes symbol
-	:align: center
-
-
+    :name: Diodes symbol
+    :align: center
 
 |Wikipedia diode|
 
 .. |Wikipedia diode| raw:: html
 
-   <a href="https://en.wikipedia.org/wiki/Diode#/media/File:Diode_pinout_en_fr.svg" target="_blank">Source:Wikipedia diode</a>
-
-
-
+    <a href="https://en.wikipedia.org/wiki/Diode#/media/File:Diode_pinout_en_fr.svg" target="_blank">Source:Wikipedia diode</a>
 
 .. image:: media/image5.3.jpeg
-	:name: DiodePicture
-	:align: center
+    :name: DiodePicture
+    :align: center
 
 1n914 diode with Cathode bar on right
 
@@ -112,12 +106,11 @@ Build the Single stage RC circuit shown in Fig. 2, with
 
 |Chart, timeline Description automatically generated|\ |image1|
 
-
 Fig. 2: (left) schematic of the single stage RC circuit, (right)
 implementation on breadboard
 
 Analysis
-~~~~~~~~
+^^^^^^^^
 
 Oftentimes in analysis for a nonlinear systems, we choose to *linearize*
 the system about a specific operating point. This leverages the fact
@@ -170,7 +163,7 @@ and applied mathematics.
    the half bridge circuit look like?
 
 Measurement
-~~~~~~~~~~~
+^^^^^^^^^^^
 
 Using the Red Pitaya’s Bode Analyzer tool, measure the frequency
 response (:math:`\left| T(f) \right|`) as described in the previous lab.
@@ -183,12 +176,12 @@ while testing.
 2. Try making the amplitude larger and see what occurs. Find a point at
    which the behavior is no longer linear
 
-Using the Red Pitaya’s Bode Oscilloscope & Spectrum analyzer tools,
-measure the large signal response to a sinusoid:
+    Using the Red Pitaya’s Bode Oscilloscope & Spectrum analyzer tools,
+    measure the large signal response to a sinusoid:
 
--  With DC Bias of 0.7V, and amplitude 0.1
+    - With DC Bias of 0.7V, and amplitude 0.1
 
--  With DC bias of 0V, and amplitude 1V
+    - With DC bias of 0V, and amplitude 1V
 
 3. Comment on the Spectral content of the output signal when compared to
    the input signal.
@@ -196,7 +189,7 @@ measure the large signal response to a sinusoid:
 4. Show a plot of the both the time waveforms and frequency domain.
 
 Comparison
-~~~~~~~~~~
+^^^^^^^^^^
 
 Respond to the following questions:
 
