@@ -29,7 +29,7 @@ satisfies the principles of scalar multiplication and superposition.
 More mathematically, for vectors :math:`\mathbf{x,y}`, scalars
 :math:`\alpha,\beta`, the operator :math:`A` is linear if:
 
-.. math:: A\left( \alpha\mathbf{x} + \beta\mathbf{y} \right) = \alpha A\left( \mathbf{x} \right) + \beta A\left( \mathbf{y} \right)\
+.. .. math:: A\left( \alpha\mathbf{x} + \beta\mathbf{y} \right) = \alpha A\left( \mathbf{x} \right) + \beta A\left( \mathbf{y} \right)\
 
 is satisfied. Examples of linear operators are:
 
@@ -53,7 +53,7 @@ a delayed version of :math:`y(t)`. In the Time domain, this system has
 an impulse response :math:`h(t)` and relates :math:`y(t)`,\ :math:`x(t)`
 by the relation:
 
-.. math:: y(t) = h(t)*x(t)
+.. .. math:: y(t) = h(t)*x(t)
 
 Where :math:`*` is the convolution operation. The act of convolution can
 be difficult, so it is oftentimes more convenient to operate in another
@@ -62,12 +62,12 @@ Fourier transform, whereby a time domain signal is represented in the
 frequency domain. A consequence of the transform is the convolution
 operation is now reduced to multiplication.
 
-.. math:: y(t) = h(t)*x(t) \rightarrow Y(f) = H(f)X(f)
+.. .. math:: y(t) = h(t)*x(t) \rightarrow Y(f) = H(f)X(f)
 
 Where :math:`H(f)` is now the transfer function or frequency response of
 the system. Canonically, the transfer function is written as:
 
-.. math:: H(f) = \frac{Y(f)}{X(f)} = \frac{a_{0} + a_{1}f + a_{2}f^{2} + \ldots + a_{n - 1}f^{n}}{b_{0} + b_{1}f + b_{2}f^{2} + \ldots + b_{m - 1}f^{m}};n,m \in \mathbb{Z}^{+}\
+.. .. math:: H(f) = \frac{Y(f)}{X(f)} = \frac{a_{0} + a_{1}f + a_{2}f^{2} + \ldots + a_{n - 1}f^{n}}{b_{0} + b_{1}f + b_{2}f^{2} + \ldots + b_{m - 1}f^{m}};n,m \in \mathbb{Z}^{+}\
 
 Every LTI system can be described by a given transfer function, with
 various systems being formed by various coefficients :math:`a,b`. In
@@ -132,7 +132,7 @@ Resistors
 
 Resistors are a general element that obey Ohm’s law:
 
-.. math:: V = IR
+.. .. math:: V = IR
 
 Where :math:`R` is the resistance measured in Ohms (V/A) is a measure of
 the resistance to current flow. These are frequency independent devices.
@@ -146,12 +146,12 @@ Capacitors
 
 Capacitors have the Current-voltage relation:
 
-.. math:: i_{C}(t) = C\frac{dV}{dt}
+.. .. math:: i_{C}(t) = C\frac{dV}{dt}
 
 Where :math:`C` is the capacitance measured in Farads (V/m). Capacitors
 have the impedance:
 
-.. math:: Z(f) = \frac{1}{j2\pi fC}
+.. .. math:: Z(f) = \frac{1}{j2\pi fC}
 
 Potentiometers
 ^^^^^^^^^^^^^^
@@ -203,7 +203,7 @@ Analysis
 
 The claimed transfer function of this circuit is
 
-.. math::
+.. .. math::
    \begin{matrix}
    T(f) = \ \frac{V_{out}(f)}{V_{in}(f)} = \frac{1}{1 + j2\pi fRC}\ \#(1) \\
    \end{matrix}
@@ -327,7 +327,7 @@ Analysis
 
 The claimed transfer function of this circuit is
 
-.. math::
+.. .. math::
    \begin{matrix}
    T(f) = \ \frac{V_{out}(f)}{V_{in}(f)} = \frac{j2\pi fRC}{1 + j2\pi fRC}\ \#(2) \\
    \end{matrix}
@@ -393,7 +393,7 @@ Analysis
 The claimed transfer function of this circuit is the same as in 3.1
 (reprinted here for courtesy)
 
-.. math::
+.. .. math::
    \begin{matrix}
    T(f) = \ \frac{V_{out}(f)}{V_{in}(f)} = \frac{1}{1 + j2\pi fRC}\  \\
    \end{matrix}
@@ -445,7 +445,7 @@ Respond to the following questions:
    :math:`C,f` are described statistically by gaussian distributions
    with mean and variances provided below:
 
-.. math::
+.. .. math::
    \begin{matrix}
    C\sim\mathcal{N}(4.7,1)nF\  \\
    f\sim\mathcal{N}\left( f_{C},1 \right)Hz \\
@@ -477,7 +477,7 @@ Analysis
 
 The claimed transfer function of this circuit is
 
-.. math::
+.. .. math::
    \begin{matrix}
    T(f) = \ \frac{V_{out}(f)}{V_{in}(f)} = \frac{1}{1 + j2\pi f\left\lbrack R_{1}C_{1} + C_{2}\left( R_{1} + R_{2} \right) \right\rbrack - 4\pi^{2}f^{2}R_{1}R_{2}C_{1}C_{2}}\ \#(3) \\
    \end{matrix}
@@ -521,7 +521,7 @@ Respond to the following questions:
    of such an arrangement look like? How different is this the
    expression you would expect from two ideal LTI systems?
 
-.. math:: T(f) = H_{1}(f)H_{2}(f) = \frac{1}{1 + j2\pi fR_{1}C_{1}}\ \frac{1}{1 + j2\pi fR_{2}C_{2}}
+.. .. math:: T(f) = H_{1}(f)H_{2}(f) = \frac{1}{1 + j2\pi fR_{1}C_{1}}\ \frac{1}{1 + j2\pi fR_{2}C_{2}}
 
 Cascading filters – variable stages
 -----------------------------------
@@ -548,7 +548,7 @@ Analysis
 
 The claimed transfer function of this circuit is
 
-.. math::
+.. .. math::
    \begin{matrix}
    T(f) = \ \frac{V_{out}(f)}{V_{in}(f)} = \frac{1}{1 + j2\pi f\left\lbrack R_{1}C_{1} + C_{2}\left( R_{1} + R_{2} \right) \right\rbrack - 4\pi^{2}f^{2}R_{1}R_{2}C_{1}C_{2}}\ \#(4) \\
    \end{matrix}
