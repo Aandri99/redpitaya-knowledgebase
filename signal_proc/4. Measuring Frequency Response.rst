@@ -31,6 +31,8 @@ More mathematically, for vectors :math:`\mathbf{x,y}`, scalars
 
 .. math:: A\left( \alpha\mathbf{x} + \beta\mathbf{y} \right) = \alpha A\left( \mathbf{x} \right) + \beta A\left( \mathbf{y} \right)\
 
+.. ! Not loaded correctly !
+
 is satisfied. Examples of linear operators are:
 
 - Differentiation/Integration
