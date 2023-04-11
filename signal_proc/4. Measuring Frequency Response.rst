@@ -400,7 +400,6 @@ The claimed transfer function of this circuit is the same as in 3.1
    T(f) = \ \frac{V_{out}(f)}{V_{in}(f)} = \frac{1}{1 + j2\pi fRC}\  \\
    \end{matrix}
 
-.. test
 
 Where :math:`j = \sqrt{- 1}` is the imaginary unit. However now the
 value of :math:`R` is unknown. Since we already know the expected
@@ -454,8 +453,7 @@ Respond to the following questions:
    C\sim\mathcal{N}(4.7,1)nF\  \\
    f\sim\mathcal{N}\left( f_{C},1 \right)Hz \\
    \end{matrix}
-   
-.. Test!
+
 
 a. What is the resulting probability distribution of :math:`R`?
 
@@ -487,8 +485,6 @@ The claimed transfer function of this circuit is
    \begin{matrix}
    T(f) = \ \frac{V_{out}(f)}{V_{in}(f)} = \frac{1}{1 + j2\pi f\left\lbrack R_{1}C_{1} + C_{2}\left( R_{1} + R_{2} \right) \right\rbrack - 4\pi^{2}f^{2}R_{1}R_{2}C_{1}C_{2}}\ \#(3) \\
    \end{matrix}
-   
-.. test!
 
 Where :math:`j = \sqrt{- 1}` is the imaginary unit.
 
@@ -529,7 +525,7 @@ Respond to the following questions:
    of such an arrangement look like? How different is this the
    expression you would expect from two ideal LTI systems?
 
-.. .. math:: T(f) = H_{1}(f)H_{2}(f) = \frac{1}{1 + j2\pi fR_{1}C_{1}}\ \frac{1}{1 + j2\pi fR_{2}C_{2}}
+.. math:: T(f) = H_{1}(f)H_{2}(f) = \frac{1}{1 + j2\pi fR_{1}C_{1}}\ \frac{1}{1 + j2\pi fR_{2}C_{2}}
 
 Cascading filters – variable stages
 -----------------------------------
@@ -556,7 +552,7 @@ Analysis
 
 The claimed transfer function of this circuit is
 
-.. .. math::
+.. math::
    \begin{matrix}
    T(f) = \ \frac{V_{out}(f)}{V_{in}(f)} = \frac{1}{1 + j2\pi f\left\lbrack R_{1}C_{1} + C_{2}\left( R_{1} + R_{2} \right) \right\rbrack - 4\pi^{2}f^{2}R_{1}R_{2}C_{1}C_{2}}\ \#(4) \\
    \end{matrix}
