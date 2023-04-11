@@ -7,7 +7,6 @@ Goals
 =====
 
 Observe the characteristic behaviors for Finite Impulse response (FIR) and Infinite Impulse response (IIR) filters implemented via the Red Pitaya
--------------------------------------------------------------------------------------------------------------------------------------------------
 
 Background
 ==========
@@ -20,10 +19,14 @@ form of:
 
 .. math:: H(z) = \frac{b_{0} + b_{1}z^{- 1} + b_{2}z^{- 2} + \ldots + b_{k}z^{- k}}{a_{0} + a_{1}z^{- 1} + a_{2}z^{- 2} + \ldots + a_{m}z^{- m}}\ where\ k,m\mathbb{\in N}
 
+.. test
+
 Where the coefficients of each expression can be viewed as the
 coefficients in the difference equation:
 
 .. math:: y\lbrack n\rbrack\left( a_{0} + a_{1}\delta\lbrack n - 1\rbrack + a_{2}\delta\lbrack n - 2\rbrack + \ldots + a_{m}\delta\lbrack n - m\rbrack \right) = x\lbrack n\rbrack\left( b_{0} + b_{1}\delta\lbrack n - 1\rbrack + b_{2}\delta\lbrack n - 2\rbrack + \ldots + b_{k}\delta\lbrack n - k\rbrack \right)\
+
+.. test
 
 Depending on the configurations of the transfer function, the filter can
 show various behaviors. This lab will demonstrate the differences
