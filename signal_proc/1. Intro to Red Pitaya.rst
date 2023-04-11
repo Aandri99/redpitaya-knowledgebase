@@ -19,7 +19,14 @@ Tasks / Measurements
 Configure the Red Pitaya for a Loopback configuration (SMA cables tied between the outputs and inputs to the Red Pitaya) as shown in Fig. 1.
 
 .. figure:: media/image1.01.jpeg
+    :name: Red Pitaya in Loopback Configuration
     :width: 75%
+    
+Fig. 1: Red Pitaya in Loopback Configuration
+    
+.. image:: media/image1.01.jpeg
+   :name: Red Pitaya in Loopback Configuration
+   :width: 75%
 
 Fig. 1: Red Pitaya in Loopback Configuration
 
@@ -139,7 +146,7 @@ Set the Span of the spectrum analyzer to 6.5 kHz.
 
 Observe the location of the peak(s), and infer what this implies about the sinusoid’s fundamental frequency and its purity (harmonic content). Mention the relative strength between the various peaks in dB and in linear scales, knowing the relation between dB and linear scales in dBm is given by:
 
-.. .. math::
+.. math::
    \begin{matrix}
    P_{dBm} = 10\log_{10}\frac{P_{lin}}{1mW}\ \#(3) \\
    \end{matrix}
