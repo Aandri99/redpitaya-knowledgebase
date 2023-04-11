@@ -207,6 +207,7 @@ The claimed transfer function of this circuit is
    \begin{matrix}
    T(f) = \ \frac{V_{out}(f)}{V_{in}(f)} = \frac{1}{1 + j2\pi fRC}\ \#(1) \\
    \end{matrix}
+
 Where :math:`j = \sqrt{- 1}` is the imaginary unit.
 
 1. What is the magnitude of the transfer function?
@@ -330,6 +331,7 @@ The claimed transfer function of this circuit is
    \begin{matrix}
    T(f) = \ \frac{V_{out}(f)}{V_{in}(f)} = \frac{j2\pi fRC}{1 + j2\pi fRC}\ \#(2) \\
    \end{matrix}
+
 Where :math:`j = \sqrt{- 1}` is the imaginary unit.
 
 1. What is the magnitude of the transfer function?
@@ -375,6 +377,7 @@ furthest pins, as this will be the total resistance of the device.
 .. image:: media/image4.17.png
     :name: Spice3
     :align: center
+
 .. image:: media/image4.18.jpeg
     :name: BreadboardCircuit3
     :align: center
@@ -394,6 +397,7 @@ The claimed transfer function of this circuit is the same as in 3.1
    \begin{matrix}
    T(f) = \ \frac{V_{out}(f)}{V_{in}(f)} = \frac{1}{1 + j2\pi fRC}\  \\
    \end{matrix}
+
 Where :math:`j = \sqrt{- 1}` is the imaginary unit. However now the
 value of :math:`R` is unknown. Since we already know the expected
 behavior of the system, we can estimate the value of :math:`R` by
@@ -446,6 +450,7 @@ Respond to the following questions:
    C\sim\mathcal{N}(4.7,1)nF\  \\
    f\sim\mathcal{N}\left( f_{C},1 \right)Hz \\
    \end{matrix}
+
 a. What is the resulting probability distribution of :math:`R`?
 
 Cascading filters – Repeated stages
@@ -476,6 +481,7 @@ The claimed transfer function of this circuit is
    \begin{matrix}
    T(f) = \ \frac{V_{out}(f)}{V_{in}(f)} = \frac{1}{1 + j2\pi f\left\lbrack R_{1}C_{1} + C_{2}\left( R_{1} + R_{2} \right) \right\rbrack - 4\pi^{2}f^{2}R_{1}R_{2}C_{1}C_{2}}\ \#(3) \\
    \end{matrix}
+
 Where :math:`j = \sqrt{- 1}` is the imaginary unit.
 
 1. What is the magnitude of the transfer function?
@@ -546,6 +552,7 @@ The claimed transfer function of this circuit is
    \begin{matrix}
    T(f) = \ \frac{V_{out}(f)}{V_{in}(f)} = \frac{1}{1 + j2\pi f\left\lbrack R_{1}C_{1} + C_{2}\left( R_{1} + R_{2} \right) \right\rbrack - 4\pi^{2}f^{2}R_{1}R_{2}C_{1}C_{2}}\ \#(4) \\
    \end{matrix}
+
 Where :math:`j = \sqrt{- 1}` is the imaginary unit.
 
 1. What is the magnitude of the transfer function?
