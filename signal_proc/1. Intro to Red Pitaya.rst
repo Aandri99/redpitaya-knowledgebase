@@ -19,16 +19,9 @@ Tasks / Measurements
 Configure the Red Pitaya for a Loopback configuration (SMA cables tied between the outputs and inputs to the Red Pitaya) as shown in Fig. 1.
 
 .. figure:: media/image1.01.jpeg
-    :width: 50%
-    :align: center
+    :width: 75%
 
 Fig. 1: Red Pitaya in Loopback Configuration
-
-
-.. figure:: media/image1.01.jpeg
-    :width: 50%
-    :align: left
-
 
 Measure the Period of a waveform – Time Domain
 ----------------------------------------------
@@ -120,7 +113,7 @@ may want to specify your cursors to track channel 2 in the cursor menu. To measu
 in time between two corresponding peaks between waveforms, and convert this to their corresponding difference in angular frequency. This can be
 calculated for signals of equal frequency with the relation
 
-.. .. math::
+.. math::
    \begin{matrix}
    \phi = 2\pi f\Delta t\ \ \ (rad)\ \#(2) \\
    \end{matrix}
