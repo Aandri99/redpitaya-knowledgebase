@@ -75,7 +75,7 @@ Measure the Fundamental Frequency of a waveform – Time Domain
 
 To measure the fundamental frequency of a waveform, bring up the X1,X2 cursors, and select a single period of the waveform. From there you can use the following relation to estimate the frequency of the waveform.:
 
-.. math::
+.. .. math::
    \begin{matrix}
    f = \frac{1}{T}\ \#(1) \\
    \end{matrix}
@@ -113,7 +113,7 @@ may want to specify your cursors to track channel 2 in the cursor menu. To measu
 in time between two corresponding peaks between waveforms, and convert this to their corresponding difference in angular frequency. This can be
 calculated for signals of equal frequency with the relation
 
-.. math::
+.. .. math::
    \begin{matrix}
    \phi = 2\pi f\Delta t\ \ \ (rad)\ \#(2) \\
    \end{matrix}
@@ -139,7 +139,7 @@ Set the Span of the spectrum analyzer to 6.5 kHz.
 
 Observe the location of the peak(s), and infer what this implies about the sinusoid’s fundamental frequency and its purity (harmonic content). Mention the relative strength between the various peaks in dB and in linear scales, knowing the relation between dB and linear scales in dBm is given by:
 
-.. math::
+.. .. math::
    \begin{matrix}
    P_{dBm} = 10\log_{10}\frac{P_{lin}}{1mW}\ \#(3) \\
    \end{matrix}
