@@ -69,6 +69,8 @@ the system. Canonically, the transfer function is written as:
 
 .. .. math:: H(f) = \frac{Y(f)}{X(f)} = \frac{a_{0} + a_{1}f + a_{2}f^{2} + \ldots + a_{n - 1}f^{n}}{b_{0} + b_{1}f + b_{2}f^{2} + \ldots + b_{m - 1}f^{m}};n,m \in \mathbb{Z}^{+}\
 
+.. ! FAILS !
+
 Every LTI system can be described by a given transfer function, with
 various systems being formed by various coefficients :math:`a,b`. In
 this lab, we will form a small number of systems with real components,
@@ -393,10 +395,12 @@ Analysis
 The claimed transfer function of this circuit is the same as in 3.1
 (reprinted here for courtesy)
 
-.. .. math::
+.. math::
    \begin{matrix}
    T(f) = \ \frac{V_{out}(f)}{V_{in}(f)} = \frac{1}{1 + j2\pi fRC}\  \\
    \end{matrix}
+
+.. test
 
 Where :math:`j = \sqrt{- 1}` is the imaginary unit. However now the
 value of :math:`R` is unknown. Since we already know the expected
@@ -445,11 +449,13 @@ Respond to the following questions:
    :math:`C,f` are described statistically by gaussian distributions
    with mean and variances provided below:
 
-.. .. math::
+.. math::
    \begin{matrix}
    C\sim\mathcal{N}(4.7,1)nF\  \\
    f\sim\mathcal{N}\left( f_{C},1 \right)Hz \\
    \end{matrix}
+   
+.. Test!
 
 a. What is the resulting probability distribution of :math:`R`?
 
@@ -477,10 +483,12 @@ Analysis
 
 The claimed transfer function of this circuit is
 
-.. .. math::
+.. math::
    \begin{matrix}
    T(f) = \ \frac{V_{out}(f)}{V_{in}(f)} = \frac{1}{1 + j2\pi f\left\lbrack R_{1}C_{1} + C_{2}\left( R_{1} + R_{2} \right) \right\rbrack - 4\pi^{2}f^{2}R_{1}R_{2}C_{1}C_{2}}\ \#(3) \\
    \end{matrix}
+   
+.. test!
 
 Where :math:`j = \sqrt{- 1}` is the imaginary unit.
 
