@@ -138,13 +138,9 @@ z-domain provides the following equation:
 
 .. math:: Y(z) = z^{- N}Y(z) + X(z)
 
-.. test
-
 Which after some algebra, provides the transfer function of:
 
 .. math:: \frac{Y(z)}{X(z)} = H(z) = \frac{1}{1 - z^{- N}} = \frac{z^{N}}{z^{N} - 1}
-
-.. test
 
 .. _matlab-analysis-1:
 
@@ -172,8 +168,6 @@ Expanding the transfer function of the resonant filter to accommodate
 this maximal number of taps yields the following transfer function
 
 .. math:: H(z) = \frac{1}{1 - z^{- 5}} = \frac{1}{1 + 0 \times \left( z^{- 1} + z^{- 2} + z^{- 3} + z^{- 4} \right) + z^{- 5}}
-
-.. test
 
 This shows that
 :math:`b_{0} = 1,\ b_{k} = 0\ \forall\ k \in \left\{ \lbrack 1,5\rbrack\mathbb{\cap Z} \right\}`,
@@ -214,7 +208,7 @@ Filter Cascade
 As mentioned previously, cascading two filters is described simply by
 multiplying their transfer functions.
 
-.. .. math:: H_{new}(z) = H_{1}(z)H_{2}(z)
+.. math:: H_{new}(z) = H_{1}(z)H_{2}(z)
 
 Perform analysis on the resulting cascaded filter :math:`H_{new}(z)`
 where :math:`H_{1}(z),H_{2}(z)` are the running sum filter with 6 taps
