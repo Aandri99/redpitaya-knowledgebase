@@ -18,11 +18,17 @@ Tasks / Measurements
 
 Configure the Red Pitaya for a Loopback configuration (SMA cables tied between the outputs and inputs to the Red Pitaya) as shown in Fig. 1.
 
-.. image:: media/image1.01.jpeg
-   :name: Red Pitaya in Loopback Configuration
-   :align: center
+.. figure:: media/image1.01.jpeg
+    :width: 50%
+    :align: center
 
 Fig. 1: Red Pitaya in Loopback Configuration
+
+
+.. figure:: media/image1.01.jpeg
+    :width: 50%
+    :align: left
+
 
 Measure the Period of a waveform – Time Domain
 ----------------------------------------------
@@ -75,10 +81,11 @@ Measure the Fundamental Frequency of a waveform – Time Domain
 
 To measure the fundamental frequency of a waveform, bring up the X1,X2 cursors, and select a single period of the waveform. From there you can use the following relation to estimate the frequency of the waveform.:
 
-.. .. math::
+.. math::
    \begin{matrix}
    f = \frac{1}{T}\ \#(1) \\
    \end{matrix}
+
 to estimate the frequency of the waveform.
 
 Once again, the Red pitaya can also calculate this by selecting the “FREQ” measurement option in the “Meas” options as shown below.
