@@ -53,7 +53,7 @@ a delayed version of :math:`y(t)`. In the Time domain, this system has
 an impulse response :math:`h(t)` and relates :math:`y(t)`,\ :math:`x(t)`
 by the relation:
 
-.. .. math:: y(t) = h(t)*x(t)
+.. math:: y(t) = h(t)*x(t)
 
 Where :math:`*` is the convolution operation. The act of convolution can
 be difficult, so it is oftentimes more convenient to operate in another
@@ -62,7 +62,7 @@ Fourier transform, whereby a time domain signal is represented in the
 frequency domain. A consequence of the transform is the convolution
 operation is now reduced to multiplication.
 
-.. .. math:: y(t) = h(t)*x(t) \rightarrow Y(f) = H(f)X(f)
+.. math:: y(t) = h(t)*x(t) \rightarrow Y(f) = H(f)X(f)
 
 Where :math:`H(f)` is now the transfer function or frequency response of
 the system. Canonically, the transfer function is written as:
@@ -132,7 +132,7 @@ Resistors
 
 Resistors are a general element that obey Ohm’s law:
 
-.. .. math:: V = IR
+.. math:: V = IR
 
 Where :math:`R` is the resistance measured in Ohms (V/A) is a measure of
 the resistance to current flow. These are frequency independent devices.
@@ -146,12 +146,12 @@ Capacitors
 
 Capacitors have the Current-voltage relation:
 
-.. .. math:: i_{C}(t) = C\frac{dV}{dt}
+.. math:: i_{C}(t) = C\frac{dV}{dt}
 
 Where :math:`C` is the capacitance measured in Farads (V/m). Capacitors
 have the impedance:
 
-.. .. math:: Z(f) = \frac{1}{j2\pi fC}
+.. math:: Z(f) = \frac{1}{j2\pi fC}
 
 Potentiometers
 ^^^^^^^^^^^^^^
