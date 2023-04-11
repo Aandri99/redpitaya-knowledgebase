@@ -19,14 +19,12 @@ form of:
 
 .. math:: H(z) = \frac{b_{0} + b_{1}z^{- 1} + b_{2}z^{- 2} + \ldots + b_{k}z^{- k}}{a_{0} + a_{1}z^{- 1} + a_{2}z^{- 2} + \ldots + a_{m}z^{- m}}\ where\ k,m\mathbb{\in N}
 
-.. test
-
 Where the coefficients of each expression can be viewed as the
 coefficients in the difference equation:
 
 .. .. math:: y\lbrack n\rbrack\left( a_{0} + a_{1}\delta\lbrack n - 1\rbrack + a_{2}\delta\lbrack n - 2\rbrack + \ldots + a_{m}\delta\lbrack n - m\rbrack \right) = x\lbrack n\rbrack\left( b_{0} + b_{1}\delta\lbrack n - 1\rbrack + b_{2}\delta\lbrack n - 2\rbrack + \ldots + b_{k}\delta\lbrack n - k\rbrack \right)\
 
-.. test
+.. ! FAILS !
 
 Depending on the configurations of the transfer function, the filter can
 show various behaviors. This lab will demonstrate the differences
@@ -55,12 +53,12 @@ Running Sum Filter
 This is a classical FIR filter that operates with the following
 difference equation
 
-.. .. math:: y\lbrack n\rbrack = \sum_{k = 0}^{M - 1}{x\lbrack n - k\rbrack}
+.. math:: y\lbrack n\rbrack = \sum_{k = 0}^{M - 1}{x\lbrack n - k\rbrack}
 
 This has the z domain transfer function of simply the sum each delay
 element multiplied by unity.
 
-.. .. math:: H(z) = \sum_{k = 0}^{M - 1}z^{- k} = \frac{z^{M} - 1}{z^{M - 1}(z - 1)}
+.. math:: H(z) = \sum_{k = 0}^{M - 1}z^{- k} = \frac{z^{M} - 1}{z^{M - 1}(z - 1)}
 
 Where the final transfer function expression is simply the expansion of
 the M-th partial sum of a geometric series for :math:`|z| < 1`.
@@ -96,7 +94,7 @@ functions using the coefficients :math:`a_{k},b_{k}`\ where
 Expanding the transfer function of the running sum filter to accommodate
 this maximal number of taps yields the following transfer function
 
-.. .. math:: H(z) = \sum_{k = 0}^{5}z^{- k} = 1 + z^{- 1} + z^{- 2} + z^{- 3} + z^{- 4} + z^{- 5}
+.. math:: H(z) = \sum_{k = 0}^{5}z^{- k} = 1 + z^{- 1} + z^{- 2} + z^{- 3} + z^{- 4} + z^{- 5}
 
 This shows that all :math:`b_{k}` values are 1, and that
 :math:`a_{0} = 1`.
@@ -127,7 +125,7 @@ Resonant Filter
 This is a classical IIR filter that operates with the following
 difference equation
 
-.. .. math:: y\lbrack n\rbrack = \ y\lbrack n - N\rbrack + x\lbrack n\rbrack
+.. math:: y\lbrack n\rbrack = \ y\lbrack n - N\rbrack + x\lbrack n\rbrack
 
 Which describes a feedforward of the input with a delayed version of the
 output. Intuitively, for periodic signals, this implies that the filter
