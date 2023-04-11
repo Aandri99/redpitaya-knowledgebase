@@ -52,12 +52,12 @@ Running Sum Filter
 This is a classical FIR filter that operates with the following
 difference equation
 
-.. math:: y\lbrack n\rbrack = \sum_{k = 0}^{M - 1}{x\lbrack n - k\rbrack}
+.. .. math:: y\lbrack n\rbrack = \sum_{k = 0}^{M - 1}{x\lbrack n - k\rbrack}
 
 This has the z domain transfer function of simply the sum each delay
 element multiplied by unity.
 
-.. math:: H(z) = \sum_{k = 0}^{M - 1}z^{- k} = \frac{z^{M} - 1}{z^{M - 1}(z - 1)}
+.. .. math:: H(z) = \sum_{k = 0}^{M - 1}z^{- k} = \frac{z^{M} - 1}{z^{M - 1}(z - 1)}
 
 Where the final transfer function expression is simply the expansion of
 the M-th partial sum of a geometric series for :math:`|z| < 1`.
@@ -93,7 +93,7 @@ functions using the coefficients :math:`a_{k},b_{k}`\ where
 Expanding the transfer function of the running sum filter to accommodate
 this maximal number of taps yields the following transfer function
 
-.. math:: H(z) = \sum_{k = 0}^{5}z^{- k} = 1 + z^{- 1} + z^{- 2} + z^{- 3} + z^{- 4} + z^{- 5}
+.. .. math:: H(z) = \sum_{k = 0}^{5}z^{- k} = 1 + z^{- 1} + z^{- 2} + z^{- 3} + z^{- 4} + z^{- 5}
 
 This shows that all :math:`b_{k}` values are 1, and that
 :math:`a_{0} = 1`.
@@ -124,7 +124,7 @@ Resonant Filter
 This is a classical IIR filter that operates with the following
 difference equation
 
-.. math:: y\lbrack n\rbrack = \ y\lbrack n - N\rbrack + x\lbrack n\rbrack
+.. .. math:: y\lbrack n\rbrack = \ y\lbrack n - N\rbrack + x\lbrack n\rbrack
 
 Which describes a feedforward of the input with a delayed version of the
 output. Intuitively, for periodic signals, this implies that the filter
@@ -135,11 +135,11 @@ this specific frequency. This behavior is known as resonance, and is
 commonly used to design many kinds of filters. Mapping this to the
 z-domain provides the following equation:
 
-.. math:: Y(z) = z^{- N}Y(z) + X(z)
+.. .. math:: Y(z) = z^{- N}Y(z) + X(z)
 
 Which after some algebra, provides the transfer function of:
 
-.. math:: \frac{Y(z)}{X(z)} = H(z) = \frac{1}{1 - z^{- N}} = \frac{z^{N}}{z^{N} - 1}
+.. .. math:: \frac{Y(z)}{X(z)} = H(z) = \frac{1}{1 - z^{- N}} = \frac{z^{N}}{z^{N} - 1}
 
 .. _matlab-analysis-1:
 
@@ -166,7 +166,7 @@ functions using the coefficients :math:`a_{k},b_{k}`\ where
 Expanding the transfer function of the resonant filter to accommodate
 this maximal number of taps yields the following transfer function
 
-.. math:: H(z) = \frac{1}{1 - z^{- 5}} = \frac{1}{1 + 0 \times \left( z^{- 1} + z^{- 2} + z^{- 3} + z^{- 4} \right) + z^{- 5}}
+.. .. math:: H(z) = \frac{1}{1 - z^{- 5}} = \frac{1}{1 + 0 \times \left( z^{- 1} + z^{- 2} + z^{- 3} + z^{- 4} \right) + z^{- 5}}
 
 This shows that
 :math:`b_{0} = 1,\ b_{k} = 0\ \forall\ k \in \left\{ \lbrack 1,5\rbrack\mathbb{\cap Z} \right\}`,
@@ -207,7 +207,7 @@ Filter Cascade
 As mentioned previously, cascading two filters is described simply by
 multiplying their transfer functions.
 
-.. math:: H_{new}(z) = H_{1}(z)H_{2}(z)
+.. .. math:: H_{new}(z) = H_{1}(z)H_{2}(z)
 
 Perform analysis on the resulting cascaded filter :math:`H_{new}(z)`
 where :math:`H_{1}(z),H_{2}(z)` are the running sum filter with 6 taps
