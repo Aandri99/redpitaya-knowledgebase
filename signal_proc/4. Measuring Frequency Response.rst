@@ -31,8 +31,6 @@ More mathematically, for vectors :math:`\mathbf{x,y}`, scalars
 
 .. math:: A\left( \alpha\mathbf{x} + \beta\mathbf{y} \right) = \alpha A\left( \mathbf{x} \right) + \beta A\left( \mathbf{y} \right)\
 
-.. test
-
 is satisfied. Examples of linear operators are:
 
 - Differentiation/Integration
@@ -205,7 +203,7 @@ Analysis
 
 The claimed transfer function of this circuit is
 
-.. .. math::
+.. math::
    \begin{matrix}
    T(f) = \ \frac{V_{out}(f)}{V_{in}(f)} = \frac{1}{1 + j2\pi fRC}\ \#(1) \\
    \end{matrix}
@@ -329,7 +327,7 @@ Analysis
 
 The claimed transfer function of this circuit is
 
-.. .. math::
+.. math::
    \begin{matrix}
    T(f) = \ \frac{V_{out}(f)}{V_{in}(f)} = \frac{j2\pi fRC}{1 + j2\pi fRC}\ \#(2) \\
    \end{matrix}
