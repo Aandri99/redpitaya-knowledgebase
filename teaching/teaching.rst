@@ -12,4 +12,4 @@ Measurements in electrical engineering
     ./Measuring Capacitance.rst
     ./Measuring Frequency.rst
     ./Measuring Inductance.rst
-..   ./Measuring Uncertainty.rst
+    ./Measuring Uncertainty.rst
