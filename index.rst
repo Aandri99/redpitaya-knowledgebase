@@ -9,4 +9,5 @@ Welcome to the Red Pitaya Knowledge
     ./active_learning/active.rst
     ./teaching/teaching.rst
     ./signal_proc/signal_proc.rst
+    ./manual.rst
 
