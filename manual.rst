@@ -1,9 +1,6 @@
 Red Pitaya STEM 125-14 Reference Manual
 ========================================
-The Red Pitaya board is a comprehensive, ready-to-deploy digital circuit development platform centered around the powerful Xilinx Zynq System on Chip (SoC). This SoC combines the capabilities of a dual-core ARM Cortex A9 processor with the flexibility of an Artix-7 FPGA. With its high-performance FPGA, multifunctional instrument capabilities, and an array of USB, Ethernet, and other ports, the Red Pitaya is equipped to host designs from basic signal processing to advanced digital systems like embedded networks and analyzers.
-
-The board boasts a variety of switches, LEDs, and other I/O devices, enabling a plethora of designs to be realized without the need for supplementary hardware. Additionally, its design supports a wide range of extension modules, ensuring that users can expand their projects using additional modules or custom-designed circuits.
-
+Red Pitaya is a Zynq7 FPGA – based low cost electronic board with many components such as two core ARM processor, fast ADCs, fast DACs, USB, LAN, etc. In many respects Red Pitaya is similar to the Arduino or Rasbery Pi with large community of enthusiasts and increasing collection of open-source material. What makes Red Pitaya even better are two fast ADCs, two fast DACs and, most of all, the programmable logic or field-programmable-gate-array (FPGA). With on-chip FPGA Red Pitaya could be used for high performance computing, state-of-the-art measurement system, signal processing and much more. Having both linux-based processing system and programmable logic Red Pitaya is an ideal board for introduction to the FPGA programming and ultimately for building powerful professional and non-professional projects such as radar, radio systems, vector-network-analyzer, etc
 
 Features
 ---------
@@ -174,6 +171,20 @@ The Red Pitaya can also be powered through pin 1 of the extension connector :ref
 .. figure:: Protection.png
 
 Protection circuit between +5 V that is provided over the micro USB power connector and +5 VD that is connected to pin1 of the extension connector :ref:`E2 <E2>`
+
+Status LED description
+----------------------
+
+    ======  ==========================================================================================================
+    color
+    ======  ==========================================================================================================
+    blue    FPGA bitstream status (in normal operation, this LED is turned on, indicating the FPGA bitstream
+            was successfully loaded).
+    green   power supply status (in normal operation, this LED is turned on, indicating that all power supplies
+            on Red Pitaya are working properly)
+    red     The heartbeat blinking pattern should show CPU load (in normal operation, this LED is blinking).
+    orange  SD card access indicator (In normal operation, this LED blinks in slow intervals).   
+    ======  ==========================================================================================================
 
 Analog inputs
 --------------
@@ -423,6 +434,181 @@ Schematics of extension connectors are shown in the picture below.
 
 .. figure:: Extension_connector.png
 
+Auxiliary analog input channels
+*******************************
+    
+    - Number of channels: 4 
+    - Nominal sampling rate: 100 ksps (H) 
+    - ADC resolution 12 bits 
+    - Connector: dedicated pins on IDC connector :ref:`E2 <E2>` (pins 13,14,15,16) 
+    - Input voltage range: 0 to +3.5 V 
+    - Input coupling: DC 
+
+
+Auxiliary analog output channels 
+*******************************
+
+    - Number of channels: 4 
+    - Output type: Low pass filtered PWM (I) 
+    - PWM time resolution: 4 ns (1/250 MHz)
+    - Connector: dedicated pins on IDC connector :ref:`E2 <E2>` (pins 17,18,19,20) v - Output voltage range: 0 to +1.8 V 
+    - Output coupling: DC 
+
+
+General purpose digital input/output channels: (N) 
+**************************************************************
+
+    - Number of digital input/output pins: 16 
+    - Voltage level: 3.3 V 
+    - Direction: configurable 
+    - Location: IDC connector :ref:`E1 <E1>` (pins 324) 
+
+External ADC clock
+-------------------
+
+The ADC clock can be provided by:
+
+    * On board 125 MHz XO (default)
+    * From an external source/through extension connector :ref:`E2 <E2>` (R25, R26 should be moved to location R23, R24)
+    * Directly from the FPGA (R25, R26 should be relocated to R27, R28) 
+
+.. figure:: External_clk.png
+    :alt: Logo
+    :align: center
+
+    Schematic
+    
+
+.. warning::
+
+    We do not advise altering the board because users have reported problems after doing so. Every board made has undergone rigorous testing, which cannot be claimed for modified boards. Any non-Red Pitaya hardware modification will void the warranty, and we cannot guarantee support for modified boards.
+
+
+.. figure:: External_clock_top.png
+    :alt: Logo
+    :align: center
+
+    Top side
+
+
+.. figure:: External_clock_bottom.png
+    :alt: Logo
+    :align: center
+
+    Bottom side
+
+.. figure:: External_clock_bottom_photo.png
+    :alt: Logo
+    :align: center
+    :width:  400px
+
+Cooling options
+----------------
+
+For additional cooling, we recommend a 30 mm or 25 mm fan. You can use the board's power connector to power the fan, but please note that it supplies only 5 V. The power connector is located between the micro-SD socket and the host USB connector.
+
+.. figure:: cooling-powerPin.jpg
+    :width: 50%
+    :align: center
+
+    Red Pitaya power connector. Image via `blog <https://rroeng.blogspot.com/2014/03/keep-your-red-pitaya-cool.html>`_ (with permission from Jacek Radzikowski).
+
+
+.. note::
+
+    The power connector is a standard 2-pin 0.1" connector.
+    Supplies only 5 V.
+
+Setting up serial console
+--------------------------
+
+The debug console can be used to follow the boot process:
+
+1. FSBL (if debug mode is enabled)
+
+   The serial console can also be used to see the output 
+   of other bare metal applications, for example, the memory test.
+
+2. U-Boot
+
+   During the boot process, U-Boot will show status and debug information.
+
+   After FSBL starts U-Boot, there is a 3-second delay
+   before U-Boot starts the Linux kernel.
+   If during this time a key is pressed,
+   U-boot will stop the boot process
+   and give the user access to its shell.
+
+3. Linux console
+
+   During the boot process, Linux will show status and debug information.
+
+   When ``systemd`` reaches ``multi-user.target`` a login prompt will appear.
+
+      User name: ``root``
+      Password: ``root``
+
+|More detailed guide for serial console|
+.. |More detailed guide for serial console| raw:: html
+
+   <a href="https://redpitaya.readthedocs.io/en/latest/developerGuide/software/console/console/console.html" target="_blank">More detailed guide for serial console</a>
+
+Hardware setup
+***************
+
+.. note::
+
+   For STEMlab 125-14, you need an additional USB to micro USB cable; for STEMlab 125-10, you need an additional serial to USB adapter (the pins need to be soldered).
+
+.. figure:: console-connector.png
+
+Connect your Red Pitaya and PC with a micro USB B to USB A cable and follow the instructions for your OS.
+
+.. figure:: pitaya-USB-connection-300x164.png
+
+
+SSH Access
+------------
+Red Pitaya supports SSH (Secure Shell) access, which allows users to establish a secure connection to the device. This is particularly useful for developers and advanced users who wish to execute commands directly on the Red Pitaya's operating system. This allows:
+
+-Secure Communication: SSH ensures that all communication between the user and the Red Pitaya device is encrypted, ensuring data integrity and confidentiality.
+
+-Remote Management: With SSH, users can remotely log into the Red Pitaya, execute commands, and manage the device. This is particularly useful for developers and advanced users who wish to perform tasks directly on the Red Pitaya's operating system without physical access.
+
+-File Transfer: SSH also supports secure file transfer protocols, allowing users to securely transfer files to and from the Red Pitaya.
+
+To Access SSH follow these steps:
+
+-Windows 10: Windows 10 users can utilize the built-in SSH client. To access Red Pitaya via SSH, open the Command Prompt or PowerShell and enter the command ssh root@rp-xxxxxx.local, where rp-xxxxxx is the Red Pitaya's hostname.
+
+-Linux/MacOS: Users of Linux or MacOS can access Red Pitaya via the terminal using the same SSH command.
+
+FPGA Configuration
+-------------------
+The Red Pitaya offers a robust FPGA configuration process, allowing developers to harness the full potential of the onboard FPGA. This section provides a comprehensive guide on the building process, ensuring seamless integration and deployment.
+
+Available Projects:
+********************
+The Red Pitaya supports various projects tailored for specific boards. Notable projects include 0.94, 0.94_250, stream_app, logic, tft, axi4lite, and classic. Each project is compatible with specific Red Pitaya models, ensuring optimized performance.
+
+Setting Up the Environment:
+****************************************
+**Vivado Configuration**: On a PC with Vivado installed, configure system variables by sourcing the appropriate settings64.sh files from the Vivado and SDK directories. This setup ensures the $PATH environment variable is correctly set.
+
+**Git Installation**: Ensure Git command line tools are installed on your computer. This is essential for downloading the Red Pitaya codebase.
+
+**Red Pitaya Codebase**: Create a directory for the Red Pitaya code and clone the repository using git clone https://github.com/RedPitaya/RedPitaya.git.
+
+Building the FPGA:
+****************************************
+**Nonproject Mode**: Red Pitaya employs a nonproject mode for FPGA building, avoiding the generation of numerous project files. This approach ensures only source files and scripts are under version control.
+
+**TCL Scripts**: Various TCL scripts are available to facilitate different tasks, from creating the bitstream and reports to generating device tree sources. Navigate to the FPGA directory within the Red Pitaya repository to execute these scripts.
+
+**Vivado GUI**: To generate and open a Vivado project using the GUI, use the make project command followed by the project name and model flag. This process creates a new project, associating all necessary Red Pitaya files. Developers can then add or modify Verilog modules and integrate them into the design.
+
+**Bitstream Generation**: After synthesis and implementation, the resulting .bit file is located within the project directory. This file should be copied to /opt/redpitaya/fpga on the Red Pitaya device for deployment.
+
 
 Software - Advanced Vivado Design Suite Integration for Red Pitaya
 -------------------------------------------------------------------
@@ -430,5 +616,6 @@ The Red Pitaya seamlessly integrates with Xilinx’s cutting-edge Vivado® Desig
 
 that elevate and streamline contemporary design processes. It boasts enhanced speed, optimizes FPGA resource utilization, and empowers designers to invest their efforts in exploring diverse design possibilities. 
 The System Edition is enriched with an embedded logic analyzer, a state-of-the-art high-level synthesis tool, among other avant-garde utilities, ensuring that Red Pitaya-based designs are crafted with precision and efficiency.
+
 
 
