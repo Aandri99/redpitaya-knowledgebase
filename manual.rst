@@ -567,21 +567,13 @@ Connect your Red Pitaya and PC with a micro USB B to USB A cable and follow the 
 .. figure:: pitaya-USB-connection-300x164.png
 
 
-SSH Access
-------------
-Red Pitaya supports SSH (Secure Shell) access, which allows users to establish a secure connection to the device. This is particularly useful for developers and advanced users who wish to execute commands directly on the Red Pitaya's operating system. This allows:
 
--Secure Communication: SSH ensures that all communication between the user and the Red Pitaya device is encrypted, ensuring data integrity and confidentiality.
+Software - Advanced Vivado Design Suite Integration for Red Pitaya
+-------------------------------------------------------------------
+The Red Pitaya seamlessly integrates with Xilinx’s cutting-edge Vivado® Design Suite, optimized for high-performance FPGA development. Vivado brings to the table a plethora of modern tools and design methodologies 
 
--Remote Management: With SSH, users can remotely log into the Red Pitaya, execute commands, and manage the device. This is particularly useful for developers and advanced users who wish to perform tasks directly on the Red Pitaya's operating system without physical access.
-
--File Transfer: SSH also supports secure file transfer protocols, allowing users to securely transfer files to and from the Red Pitaya.
-
-To Access SSH follow these steps:
-
--Windows 10: Windows 10 users can utilize the built-in SSH client. To access Red Pitaya via SSH, open the Command Prompt or PowerShell and enter the command ssh root@rp-xxxxxx.local, where rp-xxxxxx is the Red Pitaya's hostname.
-
--Linux/MacOS: Users of Linux or MacOS can access Red Pitaya via the terminal using the same SSH command.
+that elevate and streamline contemporary design processes. It boasts enhanced speed, optimizes FPGA resource utilization, and empowers designers to invest their efforts in exploring diverse design possibilities. 
+The System Edition is enriched with an embedded logic analyzer, a state-of-the-art high-level synthesis tool, among other avant-garde utilities, ensuring that Red Pitaya-based designs are crafted with precision and efficiency.
 
 FPGA Configuration
 -------------------
@@ -610,12 +602,93 @@ Building the FPGA:
 **Bitstream Generation**: After synthesis and implementation, the resulting .bit file is located within the project directory. This file should be copied to /opt/redpitaya/fpga on the Red Pitaya device for deployment.
 
 
-Software - Advanced Vivado Design Suite Integration for Red Pitaya
--------------------------------------------------------------------
-The Red Pitaya seamlessly integrates with Xilinx’s cutting-edge Vivado® Design Suite, optimized for high-performance FPGA development. Vivado brings to the table a plethora of modern tools and design methodologies 
+SSH Access
+------------
+Red Pitaya supports SSH (Secure Shell) access, which allows users to establish a secure connection to the device. This is particularly useful for developers and advanced users who wish to execute commands directly on the Red Pitaya's operating system. This allows:
 
-that elevate and streamline contemporary design processes. It boasts enhanced speed, optimizes FPGA resource utilization, and empowers designers to invest their efforts in exploring diverse design possibilities. 
-The System Edition is enriched with an embedded logic analyzer, a state-of-the-art high-level synthesis tool, among other avant-garde utilities, ensuring that Red Pitaya-based designs are crafted with precision and efficiency.
+-Secure Communication: SSH ensures that all communication between the user and the Red Pitaya device is encrypted, ensuring data integrity and confidentiality.
 
+-Remote Management: With SSH, users can remotely log into the Red Pitaya, execute commands, and manage the device. This is particularly useful for developers and advanced users who wish to perform tasks directly on the Red Pitaya's operating system without physical access.
 
+-File Transfer: SSH also supports secure file transfer protocols, allowing users to securely transfer files to and from the Red Pitaya.
 
+To Access SSH follow these steps:
+
+-Windows 10: Windows 10 users can utilize the built-in SSH client. To access Red Pitaya via SSH, open the Command Prompt or PowerShell and enter the command ssh root@rp-xxxxxx.local, where rp-xxxxxx is the Red Pitaya's hostname.
+
+-Linux/MacOS: Users of Linux or MacOS can access Red Pitaya via the terminal using the same SSH command.
+
+Programming via JTAG
+----------------------
+Red Pitaya offers a streamlined process for programming directly from Xilinx Vivado using a JTAG cable. This guide uses the Red Pitaya STEMlab 125-14, Ubuntu 20.04, Vivado 2020.1, and the Digilent JTAG-HS3 cable with a 14 to 6-pin adapter, complemented by the Digilent Adept 2 software.
+
+JTAG Cable Selection
+*********************
+An appropriate JTAG cable is essential. This guide employs the Digilent JTAG-HS3 cable with a 14 to 6-pin adapter. However, the Digilent JTAG-HS2 is also suitable, offering a 6-pin connector for direct connection to Red Pitaya’s JTAG. For an exhaustive list of JTAG cables supported by Vivado, consult Xilinx UG908 - Programming and Debugging, appendix D. Link to Xilinx UG908 https://www.xilinx.com/content/dam/xilinx/support/documentation/sw_manuals/xilinx2021_2/ug908-vivado-programming-debugging.pdf
+
+Cable Detection
+*****************
+
+In Ubuntu, use: **$ lsusb**   ----> JTAG-HS3 appears as an FTDI device.
+
+Digilent Adept 2
+*****************
+Install the Digilent Adept 2 software from Digilent's official site. Ensure both Utilities and Runtime are installed. If GUI installation fails, use the command:  **$ sudo dpkg -i <path to package>**
+
+For Digilent cables, verify adapter detection with: $ djtgcfg enum
+
+Vivado Configuration:
+*********************
+
+-Launch Vivado 2020.1.
+-Navigate to Program and Debug -> Open Target -> Auto Connect.
+-A Xilinx-compatible JTAG cable should appear in the Hardware window, under localhost.
+-Connect the JTAG cable to Red Pitaya’s JTAG connector. Pin markings are on the Red Pitaya’s PCB bottom side.
+-A Xilinx device, such as xc7z010_1, should now be visible in Vivado.
+-Click on "Program Device".
+-Upon selecting a valid bitfile, Red Pitaya is ready for programming.
+
+Simulation
+**********
+Use ModelSim from Altera. Address path issues in Ubuntu with:
+
+**$ ln -s $HOME/intelFPGA/16.1/modelsim_ase/linux $HOME/intelFPGA/16.1/modelsim_ase/linux_rh60**
+**$ sudo apt install libxft2:i386**
+
+Navigate to FPGA/sim and run:  **$ make top_tb**
+
+Building Red Pitaya Ecosystem
+------------------------------
+The Red Pitaya ecosystem is an integral environment designed for the seamless development and deployment of applications on the Red Pitaya board. This section offers guidance on setting up and building the ecosystem.
+
+Ecosystem Setup
+****************
+
+-Clone the Repository: Start by obtaining the Red Pitaya repository using the command: **git clone https://github.com/RedPitaya/RedPitaya.git**.
+-Directory Navigation: Proceed to the ecosystem directory within the repository with: **cd RedPitaya/ecosystem**.
+-Docker Build: To ensure a consistent build environment, use Docker with the command: **make**.
+
+Deployment
+*************
+After building the ecosystem, it's ready for deployment to the Red Pitaya board. Ensure the board shares a network connection with your PC.
+
+-IP Address Configuration: Define your Red Pitaya's IP address by replacing 192.168.1.100 in the command: **export REDPITAYA_IP=192.168.1.100**.
+-Ecosystem Deployment: Deploy the ecosystem using: **make install**.
+
+It's crucial to note that specific Red Pitaya OS versions might be compatible with particular ecosystem versions. Always refer to the Red Pitaya documentation and release notes to ensure compatibility.
+
+SPI Interface
+**************
+The Serial Peripheral Interface (SPI) is a synchronous serial communication interface used for short-distance communication, primarily in embedded systems. Red Pitaya provides an SPI interface, allowing users to communicate with various peripheral devices. SPI is a full-duplex interface, meaning it can transmit and receive data simultaneously. It uses a master-slave architecture, where the master device controls the data flow by generating a clock signal.
+
+Red Pitaya SPI Configuration
+******************************
+
+Red Pitaya offers a flexible SPI configuration, allowing users to interface with a variety of devices. The SPI pins are accessible via the extension connector E1. Users can configure the SPI mode, clock frequency, and other parameters to match the connected peripheral device.
+The SPI interface on Red Pitaya can be employed for various applications, including:
+
+-Reading data from sensors.
+-Communicating with external memory modules.
+-Interfacing with display modules or ADCs.
+
+Red Pitaya provides a set of tools and libraries to facilitate SPI communication. Users can configure the SPI parameters, initiate data transfers, and manage the connected devices efficiently.
