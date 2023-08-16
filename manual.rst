@@ -227,20 +227,19 @@ The Red Pitaya board analog front-end features 2 fast analog inputs.
 
 
 
-.. _jumper_pos:
-
-
 Jumpers
 ********
 
 Voltage ranges are set by input jumpers, as shown here:
 
-.. figure:: Jumper_settings.png 
+.. image:: ReferenceManual/Jumper_settings.png
+   :name: JumperSettings
 
 
 Gain can be adjusted independently for both input channels. The adjustment is done by bridging the jumpers located behind the corresponding input SMA connector.
      
-.. figure:: Jumper_settings_photo.png
+.. image:: ReferenceManual/Jumper_settings_photo.png
+   :name: JumperSettingsPhoto
             
     Jumper setting
     
@@ -256,7 +255,8 @@ Input stage schematics
 ************************
 
 
-.. figure:: Fast_analog_inputs_sch.png
+.. image:: ReferenceManual/Fast_analog_inputs_sch.png
+   :name: JumperSettings
         
     Fast analog inputs schematics
 
@@ -301,13 +301,15 @@ General Specifications
 
     The SMA connectors on the cables connected to Red Pitaya must correspond to the standard MIL­C­39012. The central pin must be of a suitable length, otherwise, the SMA connector, installed on the Red Pitaya, will mechanically damage the SMA connector. The central pin of the SMA connector on the Red Pitaya will lose contact with the board and the board will not be possible to repair due to the mechanical damage (separation of the pad from the board).
     
-.. figure:: Outputs.png
+.. image:: ReferenceManual/Outputs.png
+   :name: Outputs
        
     Output channel Output voltage range: ± 1 V
         
 The output stage is shown in the picture below.
     
-.. figure:: Outputs_stage.png
+.. image:: ReferenceManual/Output_stage.png
+   :name: OutputSchematics
        
     Output channel schematics
            
@@ -317,7 +319,8 @@ Output impedance
 
 The impedance of the output channels (output amplifier and filter) is shown in the figure below.
     
-.. figure:: Output_impedance.png
+.. image:: ReferenceManual/Output_impedance.png
+   :name: OutputImpedance
     
     Output impedance
 
@@ -331,7 +334,8 @@ Bandwidth
 
 Bandwidth measurements are shown in the picture below. Measurements are taken with the |Agilent MSO7104B| oscilloscope for each frequency step (10 Hz – 60 MHz) of the measured signal. The Red Pitaya board OUT1 is used with 0 dBm output power. The second output channel and both input channels are terminated with 50 Ohm termination. The Oscilloscope ground is used to ground the Red Pitaya board. The oscilloscope input must be set to 50 Ohm input impedance.
 
-.. figure:: Fast_Analog_Outputs_Bandwidt.png
+.. image:: ReferenceManual/Fast_Analog_Outputs_Bandwidt.png
+   :name: OutputBandwidt
 
 
 Extension Connector
@@ -342,7 +346,6 @@ Extension Connector
     - Current limitations: 500 mA for +5 V and +3.3 V (to be shared between extension module and USB devices), 50 mA 
       for -3.4 V supply. 
 
-.. _E1:
 
 Extension connector E1
 ************************
@@ -386,7 +389,6 @@ All DIOx_y pins are LVCMOS33, with the following abs. max. ratings:
     - max. 3.3V + 0.55V
     - <8 mA drive strength
     
-.. _E2:
 
 Extension connector E2
 ************************
@@ -434,7 +436,8 @@ Pin  Description            FPGA pin number FPGA pin description Voltage levels
 
 Schematics of extension connectors are shown in the picture below.
 
-.. figure:: Extension_connector.png
+.. image:: ReferenceManual/Extension_connector.webp
+   :name: ExtensionConnector
 
 Auxiliary analog input channels
 *******************************
@@ -474,9 +477,8 @@ The ADC clock can be provided by:
     * From an external source/through extension connector :ref:`E2 <E2>` (R25, R26 should be moved to location R23, R24)
     * Directly from the FPGA (R25, R26 should be relocated to R27, R28) 
 
-.. figure:: External_clk.png
-    :alt: Logo
-    :align: center
+.. image:: ReferenceManual/External_clk.png
+   :name: ExternalClk
 
     Schematic
     
@@ -491,9 +493,8 @@ Cooling options
 
 For additional cooling, we recommend a 30 mm or 25 mm fan. You can use the board's power connector to power the fan, but please note that it supplies only 5 V. The power connector is located between the micro-SD socket and the host USB connector.
 
-.. figure:: cooling-powerPin.jpg
-    :width: 50%
-    :align: center
+.. image:: ReferenceManual/cooling_powerPin.jpg
+   :name: CollingPin
 
     Red Pitaya power connector. Image via `blog <https://rroeng.blogspot.com/2014/03/keep-your-red-pitaya-cool.html>`_ (with permission from Jacek Radzikowski).
 
@@ -544,12 +545,13 @@ Hardware setup
 
    For STEMlab 125-14, you need an additional USB to micro USB cable; for STEMlab 125-10, you need an additional serial to USB adapter (the pins need to be soldered).
 
-.. figure:: console-connector.png
+.. image:: ReferenceManual/console_connector.webp
+   :name: JumperSettings
 
 Connect your Red Pitaya and PC with a micro USB B to USB A cable and follow the instructions for your OS.
 
-.. figure:: pitaya-USB-connection-300x164.png
-
+.. image:: ReferenceManual/pitaya_USB_connection-300x164.png
+   :name: JumperSettings
 
 
 Software - Advanced Vivado Design Suite Integration for Red Pitaya
