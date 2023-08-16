@@ -225,6 +225,14 @@ The Red Pitaya board analog front-end features 2 fast analog inputs.
         The SMA connectors on the cables connected to Red Pitaya must correspond to the standard MIL­C­39012. The central pin must be of suitable length, otherwise, the SMA connector installed in Red Pitaya will mechanically damage the SMA connector.
         The central pin of the SMA connector on Red Pitaya will lose contact with the board and the board will not be possible to repair due to the mechanical damage (separation of the pad from the board).
 
+Input stage schematics
+************************
+
+
+.. image:: ReferenceManual/Fast_analog_inputs_sch.png
+   :name: FastAnalogInputs
+        
+    Fast analog inputs schematics
 
 
 Jumpers
@@ -252,14 +260,7 @@ Jumper setting
     
     Jumper settings are limited to the described positions. Any other configuration or use of different jumper types may damage the product and void the warranty.
 
-Input stage schematics
-************************
 
-
-.. image:: ReferenceManual/Fast_analog_inputs_sch.png
-   :name: FastAnalogInputs
-        
-    Fast analog inputs schematics
 
 Analog outputs
 ---------------
