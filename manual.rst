@@ -230,7 +230,7 @@ Input stage schematics
 
 
 .. image:: ReferenceManual/Fast_analog_inputs_sch.png
-   :name: FastAnalogInputs
+   :name: FastAnalogInput
         
     Fast analog inputs schematics
 
