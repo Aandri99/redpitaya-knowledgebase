@@ -240,8 +240,9 @@ Gain can be adjusted independently for both input channels. The adjustment is do
      
 .. image:: ReferenceManual/Jumper_settings_photo.png
    :name: JumperSettingsPhoto
-            
-    Jumper setting
+
+
+Jumper setting
     
     - The left setting (LV) adjusts to ± 1 V full scale.
     - The right setting (HV) adjusts to ± 20 V full scale.
@@ -626,13 +627,13 @@ For Digilent cables, verify adapter detection with: $ djtgcfg enum
 Vivado Configuration:
 *********************
 
--Launch Vivado 2020.1.
--Navigate to Program and Debug -> Open Target -> Auto Connect.
--A Xilinx-compatible JTAG cable should appear in the Hardware window, under localhost.
--Connect the JTAG cable to Red Pitaya’s JTAG connector. Pin markings are on the Red Pitaya’s PCB bottom side.
--A Xilinx device, such as xc7z010_1, should now be visible in Vivado.
--Click on "Program Device".
--Upon selecting a valid bitfile, Red Pitaya is ready for programming.
+- Launch Vivado 2020.1.
+- Navigate to Program and Debug -> Open Target -> Auto Connect.
+- A Xilinx-compatible JTAG cable should appear in the Hardware window, under localhost.
+- Connect the JTAG cable to Red Pitaya’s JTAG connector. Pin markings are on the Red Pitaya’s PCB bottom side.
+- A Xilinx device, such as xc7z010_1, should now be visible in Vivado.
+- Click on "Program Device".
+- Upon selecting a valid bitfile, Red Pitaya is ready for programming.
 
 Simulation
 **********
@@ -650,16 +651,16 @@ The Red Pitaya ecosystem is an integral environment designed for the seamless de
 Ecosystem Setup
 ****************
 
--Clone the Repository: Start by obtaining the Red Pitaya repository using the command: **git clone https://github.com/RedPitaya/RedPitaya.git**.
--Directory Navigation: Proceed to the ecosystem directory within the repository with: **cd RedPitaya/ecosystem**.
--Docker Build: To ensure a consistent build environment, use Docker with the command: **make**.
+- Clone the Repository: Start by obtaining the Red Pitaya repository using the command: **git clone https://github.com/RedPitaya/RedPitaya.git**.
+- Directory Navigation: Proceed to the ecosystem directory within the repository with: **cd RedPitaya/ecosystem**.
+- Docker Build: To ensure a consistent build environment, use Docker with the command: **make**.
 
 Deployment
 *************
 After building the ecosystem, it's ready for deployment to the Red Pitaya board. Ensure the board shares a network connection with your PC.
 
--IP Address Configuration: Define your Red Pitaya's IP address by replacing 192.168.1.100 in the command: **export REDPITAYA_IP=192.168.1.100**.
--Ecosystem Deployment: Deploy the ecosystem using: **make install**.
+- IP Address Configuration: Define your Red Pitaya's IP address by replacing 192.168.1.100 in the command: **export REDPITAYA_IP=192.168.1.100**.
+- Ecosystem Deployment: Deploy the ecosystem using: **make install**.
 
 It's crucial to note that specific Red Pitaya OS versions might be compatible with particular ecosystem versions. Always refer to the Red Pitaya documentation and release notes to ensure compatibility.
 
@@ -673,9 +674,9 @@ Red Pitaya SPI Configuration
 Red Pitaya offers a flexible SPI configuration, allowing users to interface with a variety of devices. The SPI pins are accessible via the extension connector E1. Users can configure the SPI mode, clock frequency, and other parameters to match the connected peripheral device.
 The SPI interface on Red Pitaya can be employed for various applications, including:
 
--Reading data from sensors.
--Communicating with external memory modules.
--Interfacing with display modules or ADCs.
+- Reading data from sensors.
+- Communicating with external memory modules.
+- Interfacing with display modules or ADCs.
 
 Red Pitaya provides a set of tools and libraries to facilitate SPI communication. Users can configure the SPI parameters, initiate data transfers, and manage the connected devices efficiently.
 
