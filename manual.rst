@@ -256,7 +256,7 @@ Input stage schematics
 
 
 .. image:: ReferenceManual/Fast_analog_inputs_sch.png
-   :name: JumperSettings
+   :name: FastAnalogInputs
         
     Fast analog inputs schematics
 
