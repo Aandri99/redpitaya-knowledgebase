@@ -169,7 +169,8 @@ Powering Red Pitaya through extension connector
 
 The Red Pitaya can also be powered through pin 1 of the extension connector :ref:`E2 <E2>`, but in such a case, external protection must be provided by the user in order to protect the board!
 
-.. figure:: Protection.png
+.. image:: ReferenceManual/Protection.webp
+   :name: ProtectionSchematics
 
 Protection circuit between +5 V that is provided over the micro USB power connector and +5 VD that is connected to pin1 of the extension connector :ref:`E2 <E2>`
 
