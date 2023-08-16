@@ -161,7 +161,8 @@ To ensure optimal performance and stability of the Red Pitaya, the following pow
 Note:
 *It's crucial to power the Red Pitaya boards with the recommended power supply. Using a power supply that provides less power than specified or has very thin power wires can result in abnormal behavior of the device, leading to unexpected reboots and network disconnections. Similarly, powering the Red Pitaya board directly from a PC's USB or a HUB that cannot provide sufficient power, or using a subpar power cable, can also lead to these issues.*
 
-[Image: Red Pitaya Power Schematic]
+.. image:: ReferenceManual/PWR.png
+   :name: PWRschematics
 
 Powering Red Pitaya through extension connector
 --------------------------------------------------------
