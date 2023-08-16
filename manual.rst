@@ -686,10 +686,9 @@ external |testing and certification institute|.
 
     <a href="http://www.siq.si/?L=3" target="_blank">testing and certification institute</a>
 
-.. toctree::
-   :maxdepth: 6
-
-   cets
+..|Certificates| raw:: html
+    <a href="https://redpitaya.readthedocs.io/en/latest/developerGuide/hardware/125-14/cets.html" target="_blank">Certifications</a>
+    
 
 Product comparison table
 ------------------------
