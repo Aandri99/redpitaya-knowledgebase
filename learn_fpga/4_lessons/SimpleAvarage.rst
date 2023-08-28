@@ -218,10 +218,21 @@ We need to change some strings in the file:
 
 .. code-block:: tcl
 
-    cd prj/$prj_name 			→ cd prj/Examples/$prj_name
-    set path_brd ./../brd 		→ set path_brd ./../../brd
-    set path_sdc ../../sdc 		→ set path_sdc ../../../sdc
-    add_files  ../../$path_rtl 	→ add_files  ../../../$path_rtl
+
+    # Assuming the script is starting with something like:
+    cd prj/Examples/$prj_name
+    # Change of path for board files
+    set path_brd ./../../brd
+    # Change of path for sdc files
+    set path_sdc ../../../sdc
+    # Change of path for RTL files
+    add_files  ../../../$path_rtl
+    # New variable
+    set path_tbn tbn
+    # Add testbench file
+    add_files -fileset sim_1 -norecurse $path_tbn/red_pitaya_proc_tb.vhd
+    # Add block design files (original line assumed)
+    add_files $path_bd
 
 Add a variable:
 
