@@ -1,2 +1,4 @@
-# Used for pip-tools to auto-build the transitive dependencies (requirements.txt)
-# Sphinx (pin version)
+
+sphinx_rtd_theme<0.5
+
+Sphinx==4.3.0
