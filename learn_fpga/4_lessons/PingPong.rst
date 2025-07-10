@@ -7,25 +7,32 @@ Ping pong
 This is a continuation of the project → :ref:`vga image <vga_image>`
 
 
-====================
+
 Building the Project
-====================
+======================
 
-Move to folder *RedPitaya-FPGA/prj/Examples*. 
-Uncomment the line "set project_name Vga_game" and comment out all files in the make_project.tcl file. 
-Open Vivado and in Vivado Tcl Console navigate to the base folder: *RedPitaya-FPGA/prj/Examples*. 
+- Move to folder *RedPitaya-FPGA/prj/Examples*. 
+- Uncomment the line "set project_name Vga_game" and comment out all files in the make_project.tcl file. 
+- Open Vivado and in Vivado Tcl Console navigate to the base folder: *RedPitaya-FPGA/prj/Examples*. 
 
-.. figure:: img/VgaImage2.png
-    :alt: Logo
-    :align: center
+  .. figure:: img/VgaImage2.png
+      :alt: Logo
+      :align: center
 
-Then run the script source make_project.tcl. Tools → Run Tcl Script.
+- Then run the script by typing into the following command into the TCL console. If the TCL console is not open got to *Tools → Run Tcl Script*:
+
+Take a moment to examine the block design.
+
+If the Block Design is not open, click on **Flow => Open Block Design** from the top menu or select **Open Block Design** on the left-hand side of the window (under *IP INTEGRATOR*). When you are ready, click **Generate Bitstream** at the bottom-left part of the window to generate a bitstream file.
+
+After you confirm that both Synthesis and Implementation will be executed beforehand, the longer process starts. After successful completion of synthesis, implementation, and bitstream generation, the bit file can be found at **Examples/Led_blink/tmp/Led_blink/Led_blink.runs/impl_1/system_wrapper.bit**.
 
 This will make the full project, if you want to follow through with this tutorial you will need to install *Xilinx Vitis*. Afterward, run the *Vga_draw* project and continue with the tutorial.
 
-=====================
+
+
 Step-by-step tutorial
-=====================
+=======================
 
 After the previous project started working, I wanted to be able to change the picture pattern, picture size, and location on the screen. 
 I added a few more ports which will be later controlled through AXI_GPIO, with the Vitis application.
@@ -60,8 +67,9 @@ I created and connected another block design. As seen in the picture below:
     :align: center
 
 
+
 Block diagram explained
-***********************
+--------------------------
 
 
 If you are doing block design for the first time, 
@@ -83,8 +91,9 @@ Ok, let's explain the block diagram:
 
 Picture IP and VGA IP are located in *RedPitaya-FPGA/prj/Examples/Vga_draw*
 
+
 Setting 50 MHz clock
-********************
+-------------------------
 
 First, we need to set the source clock from the ZYNQ7 IP.
 
@@ -104,8 +113,9 @@ After setting the 125 MHz clock we have to divide it to get 50 MHz that we use. 
 
 Run Synthesis, Implementation and Generate Bitstream for the project Vga_draw.
 
+
 Exporting hardware
-******************
+----------------------
 
 Go to *File → Export → Export Hardware*.
 
@@ -127,8 +137,9 @@ Select *Include bitstream*.
 
 Complete the instructions and note the location of the file. In my case, the file is named design_1_wrapper (after the top module of the project).
 
+
 Creating Vitis platform project
-*******************************
+-------------------------------------
 
 Start Vitis
 
@@ -157,7 +168,7 @@ Now we can use the resulting platform to write a program.
 
 
 Creating Vitis application project
-**********************************
+-------------------------------------
 
 Go to *File → New → Application project*. Click next and select the platform you just created
 
@@ -184,7 +195,7 @@ The project should compile.
 
 
 Vitis code explained
-********************
+-----------------------
 
 For every AXI_GPIO we have to define its address and its size as shown below
 
@@ -208,23 +219,103 @@ This is how we define dual ports. The second port is shifted by 0x0008.
 
 
 How to run an application on Red Pitaya
-****************************************
+-----------------------------------------
 
 For running the program on Red Pitaya I used Winscp (Windows) or the terminal (Linux), to transfer the *.bit* file from Vivado and the *.elf* file from SDK on the board.
 
 Then connect to the RedPitaya via Putty/terminal.
 
-Go to the folder where you saved files on Red Pitaya and type:
+Instructions on changing the FPGA image:
+
+.. tabs::
+
+    .. tab:: OS version 1.04 or older
+
+        Please note that you need to change the forward slashes to backward slashes on Windows.
+
+        1. Open Terminal or CMD and go to the .bit file location.
+
+        .. code-block:: bash
+    
+            cd <Path/to/RedPitaya/repository>/prj/v0.94/project/repitaya.runs/impl_1
+
+        2. Send the file .bit (*red_pitaya_top.bit* is the default name) to the Red Pitaya with the ``scp`` command.
+
+        .. code-block:: bash
+
+            scp red_pitaya_top.bit root@rp-xxxxxx.local:/root
+
+        3. Now establish an SSH communication with your Red Pitaya and check if you have the copy *red_pitaya_top.bit* in the root directory.
+
+        .. code-block:: bash
+
+            redpitaya> ls
+
+        4. Load the *red_pitaya_top.bit* to **xdevcfg** with
+
+        .. code-block:: bash
+
+            redpitaya> cat red_pitaya_top.bit > /dev/xdevcfg
+
+    .. tab:: OS version 2.00
+
+        The 2.00 OS uses a new mechanism of loading the FPGA. The process will depend on whether you are using Linux or Windows as the ``echo`` command functinality differs bewteen the two.
+
+        Please note that you need to change the forward slashes to backward slashes on Windows.
+
+        1. On Windows, open **Vivado** and use the **TCL console**. Alternatively, use **Vivado HSL Command Prompt** (use Windows search to find it). Navigate to the *.bit* file location.
+
+           On Linux, open the **Terminal** and go to the *.bit* file location.
+
+           .. code-block:: bash
+
+               cd <Path/to/RedPitaya/repository>/prj/v0.94/project/repitaya.runs/impl_1
+
+        2. Create *.bif* file (for example, *red_pitaya_top.bif*) and use it to generate a binary bitstream file (*red_pitaya_top.bit.bin*)
+
+           **Windows (Vivado TCL console or Vivado HSL Command Prompt):**
+
+           .. code-block:: bash
+
+               echo all:{ red_pitaya_top.bit } >  red_pitaya_top.bif
+               bootgen -image red_pitaya_top.bif -arch zynq -process_bitstream bin -o red_pitaya_top.bit.bin -w
+
+           **Linux and Windows (WSL + Normal CMD):**
+
+           .. code-block:: bash
+
+               echo -n "all:{ red_pitaya_top.bit }" >  red_pitaya_top.bif
+               bootgen -image red_pitaya_top.bif -arch zynq -process_bitstream bin -o red_pitaya_top.bit.bin -w
+
+        3. Using a standard command prompt, send the file *.bit.bin* to the Red Pitaya with the ``scp`` command.
+
+           .. code-block:: bash
+   
+               scp red_pitaya_top.bit.bin root@rp-xxxxxx.local:/root
+
+        4. Now establish an SSH communication with your Red Pitaya and check if you have the copy *red_pitaya_top.bit.bin* in the root directory.
+
+           .. code-block:: bash
+
+               redpitaya> ls
+
+        5. Load the *red_pitaya_top.bit.bin* image into the FPGA:
+
+           .. code-block:: bash
+
+               redpitaya> fpgautil -b red_pitaya_top.bit.bin
+
+
+After the FPGA image has been changed type in the following:
 
 .. code-block:: bash
     
-    cat <file_name.bit> >/dev/xdevcfg
     chmod +x <file_name.elf>
     ./ <file_name.elf>
 
 
 Creating an IP core with an AXI bus
-***********************************
+--------------------------------------
 
 Open the *Vga_draw* project with Vivado.
 
@@ -277,7 +368,7 @@ A new project will be created, which we can use to start writing logic.
 
 
 Writing an IP core to draw a rectangle in Verilog
-*************************************************
+----------------------------------------------------
 
 Let's create a new Verilog file named *RectPic.v*. This module will describe drawing a rectangle - the module's inputs are:
 
@@ -440,8 +531,9 @@ After all these procedures, you can pack the project into the IP kernel. Click *
 
 Press *Re-Package IP*.
 
+
 Writing an IP core to draw a circle in Verilog
-**********************************************
+------------------------------------------------
 
 Let's create an AXI IP core named *CircleImage*, we only need 3 registers, but I left 4. 
 
@@ -533,8 +625,9 @@ The drawing process is similar to *RectPic*:
 As in the previous paragraph, add the necessary ports and rename the registers for their purpose (this time we only have 3 registers). 
 Do not forget to pack the project into an IP core.
 
-Writing an IP core to work with the keyboard.
-*********************************************
+
+Writing an IP core to work with the keyboard
+------------------------------------------------
 
 Create another empty IP core where you will need to add an input for the buttons:
 
@@ -570,8 +663,8 @@ Scheme of one of the buttons:
 
 
 
-Connecting IP cores to the processor.
-*************************************
+Connecting IP cores to the processor
+--------------------------------------
 
 Now you can change the Vga_draw project with the newly added cores or open the project Vga_game where everything is already done.
 
@@ -590,8 +683,9 @@ Setting up addressing:
     :alt: Logo
     :align: center
 
+
 Writing game code in C++
-************************
+-------------------------
 
 The complete game code is located in *RedPitaya-FPGA/prj/Examples/Vga_game/Vitis_sources*. In the following chapters, we will discuss what the important parts of the code do.
 
@@ -607,23 +701,27 @@ Processing of clicks is done in the Process method of the Keyboard class. The pu
 
 The order of the keys is set by the position of the button in the class enum Keys, so the buttons can be soldered incorrectly.
 
+
 Rectangle class
 ^^^^^^^^^^^^^^^
 
 Quite a simple class, the functionality of which boils down to writing coordinates and sizes in the corresponding registers.
+
 
 Ball class
 ^^^^^^^^^^
 
 A distinctive feature of this class is racket collision detection. Collision handling is performed in the Process method of this class, objects that need to be detected as an argument are passed. Also, this method implicitly detects collisions with screen borders.
 
+
 Players score
 ^^^^^^^^^^^^^
 
 To simplify the code, the score is displayed through the Rectangle class, its width corresponds to the player's score.
 
+
 Building
-********
+--------
 
 Copy the c ++ code to RedPitaya, and compile:
 
@@ -631,12 +729,13 @@ Copy the c ++ code to RedPitaya, and compile:
 
     g++  -std=c++11 -o vga_game.o vga_game.cpp
 
+
 First run
-*********
+---------
 
 Downloading Bitstream and compiling the code is described in the previous lessons.
 
-If you have followed the steps this far - congratulations, you have just made a simple version of a pong game. To run it connect to your RedPitaya with a browser and launch your new application.
+If you have followed the steps this far - congratulations, you have just made a simple version of a pong game. To run it connect to your Red Pitaya with a browser and launch your new application.
 
 When loading a bitstream, all blocks with the default size and position will be outputs:
 
@@ -649,3 +748,14 @@ After starting the program, all the figures will be displayed in their places:
 .. figure:: img/PingPong13.png
     :alt: Logo
     :align: center
+
+
+
+Author & Source
+===============
+
+Original author: Jaka Koren
+
+Original lesson: `link <https://lniv.fe.uni-lj.si/xilinx/jkoren/PingPong.html>`_
+
+

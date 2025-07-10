@@ -4,59 +4,6 @@
 Stopwatch
 #########
 
-============================================
-Generation of an example from the repository
-============================================
-
-Move to folder **RedPitaya-FPGA/prj/Examples**. Uncomment the line *"set project_name Stopwatch"* and comment all files in the **make_project.tcl** file. Open Vivado and in Vivado Tcl Console navigate to the base folder: **RedPitaya-FPGA/prj/Examples.**
-
-.. figure:: img/LedBlink1.png
-    :alt: Logo
-    :align: center
-
-Then run the script *source make_project.tcl*. Tools → Run Tcl Script
-
-.. figure:: img/LedBlink2.png
-    :alt: Logo
-    :align: center
-
-**make_project.tcl** automatically generates a complete project in the **RedPitaya-FPGA/prj/Examples/Stopwatch/** directory. Take a moment to examine the block design.
-If the block design is not open, click on **Open Block Design** on the left-hand side of the window. When you are ready, click **Generate Bitstream** at the bottom-left part of the window to generate a bitstream file.
-After you confirm that both Synthesis and Implementation will be executed beforehand the longer process starts. After successful completion of synthesis, implementation, and bitstream generation, the bit file can be found at **Examples/Stopwatch/tmp/Stopwatch/Stopwatch.runs/impl_1/system_wrapper.bit**
-
-Copy the newly generated bit file to the RedPitaya’s **/root/tmp** folder using WinSCP or type the following commands in the Linux console.
-
-.. code-block:: shell-session
-
-    cd Examples/Stopwatch/tmp/Stopwatch/Stopwatch.runs/impl_1/
-    scp system_wrapper.bit root@your_rp_ip:Stopwatch.bit
-
-Finally, we are ready to program the FPGA with our own bitstream file located in the **/root/** folder on Red Pitaya. 
-To program the FPGA simply execute the following line in the Linux console on your Red Pitaya (use Putty or WSL):
-
-.. code-block:: shell-session
-
-    cat /root/Stopwatch.bit > /dev/xdevcfg
-
-If you want to roll back to the official Red Pitaya FPGA program, run the following command:
-
-.. tabs::
-
-    .. group-tab:: OS version 1.04 or older
-
-        .. code-block:: shell-session
-
-            redpitaya> cat /opt/redpitaya/fpga/fpga_0.94.bit > /dev/xdevcfg
-
-    .. group-tab:: OS version 2.00
-
-        .. code-block:: shell-session
-
-            redpitaya> overlay.sh v0.94
-
-or simply restart your Red Pitaya.
-
-
 ============
 Introduction
 ============
@@ -76,9 +23,17 @@ This guide assumes that you are familiar with the concepts introduced in the pre
 Verilog Module
 ==============
 
-Open one of the previous Vivado projects to get a basic block diagram. Next, insert the binary counter, if it is not already present, and add the CE and SCLR ports. This can be done by double-clicking on the binary counter IP core in our block design and selecting CE and SCLR under the Control tab. Then add an *xlslice* IP block with the following dimensions: *Din Width: 32, Din From: 31, Din Down To: 24*. Connect the binary counter's CLK pin to PS's *FCLK_CLK0*, the binary counter's output to the xlslice's input, and the xlslice's output to the led_o external port. This last part will display 8 MSBs of the 32-bit counter on Red Pitaya’s LED bar. If you started from Project 1, change the LEFT property of the *led_o* port from 0 to 7.
+- Open one of the previous Vivado projects to get a basic block diagram. 
+- Next, insert the *binary counter* IP core, if it is not already present, and add the *CE* and *SCLR ports*. This can be done by *double-clicking* on the *binary counter IP core* in our block design and selecting *CE* and *SCLR* under the *Control tab*. - Then add an *xlslice* IP block with the following dimensions: *Din Width: 32, Din From: 31, Din Down To: 24*.
+- Connect the binary counter's CLK pin to PS's *FCLK_CLK0*, the binary counter's output to the *xlslice*'s input, and the *xlslice*'s output to the *led_o* external port. This last part will display 8 MSBs of the 32-bit counter on Red Pitaya’s LED bar.
+- If you started from Project 1, change the LEFT property of the *led_o* port from 0 to 7.
 
-We are ready to insert the AXI General Purpose IO IP core (*AXI GPIO*) into our block design. When the core is added, double-click on the block, check *Enable Dual Channel* and set *All Inputs* for the GPIO 2. To connect the AXI GPIO to the processing system, click on *Run Connection Automation* on top of the block design. Select *S_AXI* and click OK. This will automatically create AXI Interconnect and Processor System Reset blocks. Next, add two xlslice IP cores with 32-bit Din. *xls_CE* should have *Din From* and *Din Down* both set to 0 and *xls_SCLR* should have them both set to 1. Connect all the blocks as shown in the figure below.
+- We are ready to insert the AXI General Purpose IO IP core (*AXI GPIO*) into our block design.
+- When the core is added, double-click on the block, check *Enable Dual Channel* and set *All Inputs* for the GPIO 2.
+- To connect the *AXI GPIO* to the processing system, click on *Run Connection Automation* on top of the block design. Select *S_AXI* and click OK. This will automatically create AXI Interconnect and Processor System Reset blocks.
+- Next, add two *xlslice* IP cores with 32-bit Din. *xls_CE* should have *Din From* and *Din Down* both set to 0 and *xls_SCLR* should have them both set to 1.
+
+- Connect all the blocks as shown in the figure below.
 
 .. figure:: img/Stopwatch1.png
     :alt: Logo
@@ -86,17 +41,94 @@ We are ready to insert the AXI General Purpose IO IP core (*AXI GPIO*) into our 
     
     Block Design
 
-Next, we need to set the AXI GPIO core’s memory address and range. We will use this address later to access the IP core from the Linux side. On top of the window, choose the Address Editor tab and set all the values as shown below. Remember, the address of our GPIO block is 0x4200_0000.
+Next, we need to set the *AXI GPIO* core’s memory address and range. We will use this address later to access the IP core from the Linux side. On top of the window, choose the Address Editor tab and set all the values as shown below (set the address to 0x4200_0000 and the size to 4k). Remember, the address of our GPIO block is *0x4200_0000*.
 
 .. figure:: img/Stopwatch2.png
     :alt: Logo
     :align: center
 
-The FPGA program is ready. Proceed with synthesis, implementation, and generation of the bitstream file. When the file is generated and copied to a folder on Red Pitaya’s Linux, write the bitstream file to programmable logic with the following command.
+The FPGA program is ready. Proceed with *Synthesis*, *Implementation*, and *Generation of the bitstream file*. When the file is generated and copied to a folder on Red Pitaya’s Linux, write the bitstream file to programmable logic:
 
-.. code-block:: shell-session
 
-    cat system_wrapper.bit > /dev/xdevcfg
+.. tabs::
+
+    .. tab:: OS version 1.04 or older
+
+        Please note that you need to change the forward slashes to backward slashes on Windows.
+
+        1. Open Terminal or CMD and go to the .bit file location.
+
+        .. code-block:: bash
+    
+            cd <Path/to/RedPitaya/repository>/prj/Examples/Stopwatch/tmp/Stopwatch/Stopwatch.runs/impl_1
+
+        2. Send the .bit file to the Red Pitaya with the ``scp`` command or use WinSCP or a similar tool to perform the operation.
+
+        .. code-block:: bash
+
+            scp system_wrapper.bit root@rp-xxxxxx.local:/root/Stopwatch.bit
+
+        3. Now establish an SSH communication with your Red Pitaya and check if you have the copy *Stopwatch.bit* in the root directory.
+
+        .. code-block:: bash
+
+            redpitaya> ls
+
+        4. Load the *Stopwatch.bit* to **xdevcfg** with
+
+        .. code-block:: bash
+
+            redpitaya> cat Stopwatch.bit > /dev/xdevcfg
+
+    .. tab:: OS version 2.00
+
+        The 2.00 OS uses a new mechanism of loading the FPGA. The process will depend on whether you are using Linux or Windows as the ``echo`` command functinality differs bewteen the two.
+
+        Please note that you need to change the forward slashes to backward slashes on Windows.
+
+        1. On Windows, open **Vivado** and use the **TCL console**. Alternatively, use **Vivado HSL Command Prompt** (use Windows search to find it). Navigate to the *.bit* file location.
+
+           On Linux, open the **Terminal** and go to the *.bit* file location.
+
+           .. code-block:: bash
+
+               cd <Path/to/RedPitaya/repository>/prj/Examples/Stopwatch/tmp/Stopwatch/Stopwatch.runs/impl_1
+
+        2. Create *.bif* file and use it to generate a binary bitstream file (*system_wrapper.bit.bin*)
+
+           **Windows (Vivado TCL console or Vivado HSL Command Prompt):**
+
+           .. code-block:: bash
+
+               echo all:{ system_wrapper.bit } >  system_wrapper.bif
+               bootgen -image system_wrapper.bif -arch zynq -process_bitstream bin -o system_wrapper.bit.bin -w
+
+           **Linux and Windows (WSL + Normal CMD):**
+
+           .. code-block:: bash
+
+               echo -n "all:{ system_wrapper.bit }" >  system_wrapper.bif
+               bootgen -image system_wrapper.bif -arch zynq -process_bitstream bin -o system_wrapper.bit.bin -w
+
+        3. Using a standard command prompt, send the *.bit.bin* file to the Red Pitaya with the ``scp`` command or use WinSCP or a similar tool to perform the operation.
+
+           .. code-block:: bash
+   
+               scp system_wrapper.bit.bin root@rp-xxxxxx.local:/root/Stopwatch.bit.bin
+
+        4. Now establish an SSH communication with your Red Pitaya and check if you have the copy *Stopwatch.bit.bin* in the root directory (you can use Putty or WSL).
+
+           .. code-block:: bash
+
+               redpitaya> ls
+
+        5. Finally, we are ready to program the FPGA with our own bitstream file located in the **/root/** folder on Red Pitaya. 
+           To program the FPGA simply execute the following line in the Red Pitaya Linux terminal that will load the *Stopwatch.bit.bin* image into the FPGA:
+
+           .. code-block:: bash
+
+               redpitaya> fpgautil -b Stopwatch.bit.bin
+
 
 To write or read from our FPGA program we will use Red Pitaya’s |monitor tool|, available in Red Pitaya’s Linux. Try the following commands:
 
@@ -113,7 +145,7 @@ To write or read from our FPGA program we will use Red Pitaya’s |monitor tool|
     monitor 0x42000000	# read: cfg  on GPIO1
     monitor 0x42000008	# read: data on GPIO2
 
-Great, we have created a stopwatch with a resolution of 8 ns! Using the AXI communication protocol, we can easily access our GPIO IP core. More details about the GPIO core can be found in the |Vivado documentation|. If you would like to know how much time has passed between start and stop in seconds and not in the number of clock cycles, you can use the following programs on Linux to write, read, and convert data.
+Great, we have created a stopwatch with a resolution of 8 ns! Using the AXI communication protocol, we can easily access our GPIO IP core. More details about the GPIO core can be found in the |Vivado documentation|. If you would like to know how much time has passed between start and stop in seconds and not in the number of clock cycles, you can use the following programs to write, read, and convert data.
 
 .. |Vivado documentation| raw:: html
 
@@ -221,8 +253,13 @@ Open the Jupyter Notebook application, create a new notebook, copy the code belo
         ('gpio2_control', 'uint32')
     ])
 
+    ## Change the FPGA image ##
+
+    os.system('cat /root/Stopwatch.bit > /dev/xdevcfg')    # OS 1.04 or older
+    # os.system('fpgautil -b /root/Stopwatch.bit.bin')     # OS 2.00 and above
+
     memory_file_handle = os.open('/dev/mem', os.O_RDWR)
-    axi_mmap = mmap.mmap(fileno=memory_file_handle, length=mmap.PAGESIZE, offset=0x40000000)
+    axi_mmap = mmap.mmap(fileno=memory_file_handle, length=mmap.PAGESIZE, offset=0x42000000)
     axi_numpy_array = np.recarray(1, axi_gpio_regset, buf=axi_mmap)
     axi_array_contents = axi_numpy_array[0]
 
@@ -252,11 +289,53 @@ The following terminal commands can be used to change the PL fabric clock speed.
     echo 1 > $devcfg/fclk/fclk0/enable
 
 
+========================================================
+Automatic generation of an example from the repository
+========================================================
+
+Move to folder **RedPitaya-FPGA/prj/Examples**. Uncomment the line *"set project_name Stopwatch"* and comment all files in the **make_project.tcl** file. Open Vivado and in Vivado Tcl Console navigate to the base folder: **RedPitaya-FPGA/prj/Examples.**
+
+.. figure:: img/LedBlink1.png
+    :alt: Logo
+    :align: center
+
+Then run the script *source make_project.tcl*. Tools → Run Tcl Script
+
+.. figure:: img/LedBlink2.png
+    :alt: Logo
+    :align: center
+
+**make_project.tcl** automatically generates a complete project in the **RedPitaya-FPGA/prj/Examples/Stopwatch/** directory. Take a moment to examine the block design.
+If the block design is not open, click on **Open Block Design** on the left-hand side of the window. When you are ready, click **Generate Bitstream** at the bottom-left part of the window to generate a bitstream file.
+After you confirm that both Synthesis and Implementation will be executed beforehand the longer process starts. After successful completion of synthesis, implementation, and bitstream generation, the bit file can be found at **Examples/Stopwatch/tmp/Stopwatch/Stopwatch.runs/impl_1/system_wrapper.bit**
+
+Follow the instructions above to change the FPGA image on the Red Pitaya.
+
 ==========
 Conclusion
 ==========
 
-We have created another simple project where we learned how to communicate between our FPGA program and Linux running on Red Pitaya’s Zynq7 ARM processor.
+Congratulations! We have created another simple project where we learned how to communicate between our FPGA program and Linux running on Red Pitaya’s Zynq7 ARM processor.
+
+
+If you want to roll back to the official Red Pitaya FPGA program, run the following command:
+
+.. tabs::
+
+    .. group-tab:: OS version 1.04 or older
+
+        .. code-block:: shell-session
+
+            redpitaya> cat /opt/redpitaya/fpga/fpga_0.94.bit > /dev/xdevcfg
+
+    .. group-tab:: OS version 2.00
+
+        .. code-block:: shell-session
+
+            redpitaya> overlay.sh v0.94
+
+or simply restart your Red Pitaya.
+
 
 ===============
 Author & Source
